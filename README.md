@@ -1,1 +1,2 @@
 # Data-Wrangling
+The course on Unix/Linux Tools for NGS Data Manipulation and Wrangling is designed to provide students with a comprehensive understanding of utilizing command-line tools in Unix/Linux environments for the manipulation and analysis of Next-Generation Sequencing (NGS) data. Students will gain hands-on experience with essential command-line tools, scripting, and bioinformatics pipelines to efficiently process NGS data
