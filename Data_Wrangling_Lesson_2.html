@@ -363,12 +363,64 @@ kbd {
 
 <p>The <code>cut</code> command is used to extract sections from each line of files.</p>
 
-<h3 id="toc_5"><strong>Example: Extract the first column from a file</strong></h3>
+<h3 id="toc_5"><strong>Example: Extract the first field (column) from a file</strong></h3>
 
-<div><pre><code class="language-bash">cut -d &#39;,&#39; -f 1 data.csv</code></pre></div>
+<div><pre><code class="language-bash">cut -d &#39;,&#39; -f 2 data.csv   # Extract the second field using a comma as delimiter</code></pre></div>
 
-<p><code>-d &#39;,&#39;</code>: Specifies the delimiter as a comma (for CSV files).
-<code>-f 1</code>: Extracts the first field (column) from each line.</p>
+<p><strong>More</strong> <code>cut</code> <strong>options</strong></p>
+
+<table>
+<thead>
+<tr>
+<th><strong>Option</strong></th>
+<th><strong>Description</strong></th>
+<th><strong>Example</strong></th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>-f</code></td>
+<td>Specify fields (columns) to extract, separated by a delimiter.</td>
+<td><code>cut -f 1,3 file.txt</code> (extract fields 1 and 3)</td>
+</tr>
+<tr>
+<td><code>-d</code></td>
+<td>Specify the delimiter that separates fields (default is tab).</td>
+<td><code>cut -d &#39;,&#39; -f 2 file.csv</code> (comma-separated values)</td>
+</tr>
+<tr>
+<td><code>-c</code></td>
+<td>Extract specific character positions.</td>
+<td><code>cut -c 1-5 file.txt</code> (extract characters 1 to 5)</td>
+</tr>
+<tr>
+<td><code>--complement</code></td>
+<td>Extract everything <strong>except</strong> the specified fields or characters.</td>
+<td><code>cut -f 1 --complement file.txt</code></td>
+</tr>
+<tr>
+<td><code>-b</code></td>
+<td>Extract specific byte positions.</td>
+<td><code>cut -b 1-3 file.txt</code> (extract first 3 bytes)</td>
+</tr>
+<tr>
+<td><code>--output-delimiter</code></td>
+<td>Change the output delimiter when displaying fields.</td>
+<td><code>cut -f 1,3 -d &#39;,&#39; --output-delimiter=&#39;|&#39; file.csv</code></td>
+</tr>
+<tr>
+<td><code>--help</code></td>
+<td>Display help information about the <code>cut</code> command.</td>
+<td><code>cut --help</code></td>
+</tr>
+<tr>
+<td><code>--version</code></td>
+<td>Display the version of the <code>cut</code> command.</td>
+<td><code>cut --version</code></td>
+</tr>
+</tbody>
+</table>
 
 <h3 id="toc_6"><strong>Using find</strong></h3>
 
@@ -382,6 +434,81 @@ kbd {
 <code>-name &quot;*.txt&quot;</code>: Looks for files with the <code>.txt</code> extension.
 This command will list all <code>.txt</code> files in the current directory and its subdirectories.</p>
 
+<p><strong>More</strong> <code>find</code> <strong>options</strong></p>
+
+<table>
+<thead>
+<tr>
+<th><strong>Option</strong></th>
+<th><strong>Description</strong></th>
+<th><strong>Example</strong></th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>-name PATTERN</code></td>
+<td>Find files with a name matching the given pattern.</td>
+<td><code>find . -name &quot;*.txt&quot;</code></td>
+</tr>
+<tr>
+<td><code>-type TYPE</code></td>
+<td>Find files of a specific type (e.g., <code>f</code> for files, <code>d</code> for directories).</td>
+<td><code>find . -type f</code> (find files)</td>
+</tr>
+<tr>
+<td><code>-size N[c]</code></td>
+<td>Find files of a specific size (e.g., <code>-size 100c</code> for 100 bytes).</td>
+<td><code>find . -size +100M</code> (files larger than 100MB)</td>
+</tr>
+<tr>
+<td><code>-mtime N</code></td>
+<td>Find files modified N days ago (e.g., <code>-mtime +30</code> for files modified 30 days ago).</td>
+<td><code>find . -mtime -7</code> (modified in the last week)</td>
+</tr>
+<tr>
+<td><code>-ctime N</code></td>
+<td>Find files with their status changed N days ago.</td>
+<td><code>find . -ctime 1</code> (changed exactly 1 day ago)</td>
+</tr>
+<tr>
+<td><code>-atime N</code></td>
+<td>Find files accessed N days ago.</td>
+<td><code>find . -atime +30</code> (not accessed in 30+ days)</td>
+</tr>
+<tr>
+<td><code>-user USER</code></td>
+<td>Find files owned by a specific user.</td>
+<td><code>find /home -user john</code></td>
+</tr>
+<tr>
+<td><code>-group GROUP</code></td>
+<td>Find files belonging to a specific group.</td>
+<td><code>find /project -group developers</code></td>
+</tr>
+<tr>
+<td><code>-perm MODE</code></td>
+<td>Find files with specific permissions.</td>
+<td><code>find . -perm 755</code></td>
+</tr>
+<tr>
+<td><code>-exec COMMAND {} \;</code></td>
+<td>Execute a command on each found file.</td>
+<td><code>find . -name &quot;*.log&quot; -exec rm {} \;</code></td>
+</tr>
+<tr>
+<td><code>-print</code></td>
+<td>Print the names of the found files.</td>
+<td><code>find . -name &quot;*.sh&quot; -print</code></td>
+</tr>
+<tr>
+<td><code>-ls</code></td>
+<td>Print a long listing of the found files.</td>
+<td><code>find . -ls</code></td>
+</tr>
+</tbody>
+</table>
+
 <h3 id="toc_8"><strong>Using paste</strong></h3>
 
 <p>The <code>paste</code> command is used to merge lines of files.</p>
@@ -392,19 +519,149 @@ This command will list all <code>.txt</code> files in the current directory and 
 
 <p>This command merges <code>file1.txt</code> and <code>file2.txt</code>, displaying their contents side by side, with a tab separating the columns.</p>
 
-<h3 id="toc_10">Example: Redirecting stdin to a file</h3>
+<p><strong>More</strong> <code>paste</code> <strong>options</strong></p>
+
+<table>
+<thead>
+<tr>
+<th><strong>Option</strong></th>
+<th><strong>Description</strong></th>
+<th><strong>Example</strong></th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>-d</code></td>
+<td>Specify a delimiter to use between pasted lines.</td>
+<td><code>paste -d &#39;,&#39; file1.txt file2.txt</code> (use comma as delimiter)</td>
+</tr>
+<tr>
+<td><code>-s</code></td>
+<td>Paste one file at a time, instead of parallel line-by-line.</td>
+<td><code>paste -s file1.txt</code> (concatenate lines from file1)</td>
+</tr>
+<tr>
+<td><code>-</code></td>
+<td>Use standard input as one of the input files.</td>
+<td><code>paste - file1.txt</code> (paste stdin with file1.txt)</td>
+</tr>
+<tr>
+<td><code>--help</code></td>
+<td>Display help information about the <code>paste</code> command.</td>
+<td><code>paste --help</code></td>
+</tr>
+<tr>
+<td><code>--version</code></td>
+<td>Display the version of the <code>paste</code> command.</td>
+<td><code>paste --version</code></td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="toc_10"><strong>Using sort</strong></h3>
+
+<p>The <code>sort</code>command arranges in several ways</p>
+
+<h3 id="toc_11">Example: Sort by a Specific Field</h3>
+
+<div><pre><code class="language-bash">sort -k 2 filename.txt</code></pre></div>
+
+<p>This sorts by the second field of each line</p>
+
+<p><strong>More</strong> <code>sort</code> <strong>options</strong></p>
+
+<table>
+<thead>
+<tr>
+<th><strong>Option</strong></th>
+<th><strong>Description</strong></th>
+<th><strong>Example</strong></th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>-n</code></td>
+<td>Sort numerically (e.g., 1, 2, 10 instead of 1, 10, 2).</td>
+<td><code>sort -n file.txt</code></td>
+</tr>
+<tr>
+<td><code>-r</code></td>
+<td>Sort in reverse order.</td>
+<td><code>sort -r file.txt</code></td>
+</tr>
+<tr>
+<td><code>-k N</code></td>
+<td>Sort based on the Nth column or field.</td>
+<td><code>sort -k 2 file.txt</code> (sort by 2nd column)</td>
+</tr>
+<tr>
+<td><code>-t CHAR</code></td>
+<td>Specify the field delimiter (default is whitespace).</td>
+<td><code>sort -t &#39;,&#39; -k 2 file.csv</code> (comma-separated values)</td>
+</tr>
+<tr>
+<td><code>-u</code></td>
+<td>Sort and remove duplicate lines.</td>
+<td><code>sort -u file.txt</code></td>
+</tr>
+<tr>
+<td><code>-o FILE</code></td>
+<td>Write the output to the specified file instead of standard output.</td>
+<td><code>sort file.txt -o sorted_file.txt</code></td>
+</tr>
+<tr>
+<td><code>-b</code></td>
+<td>Ignore leading blanks when sorting.</td>
+<td><code>sort -b file.txt</code></td>
+</tr>
+<tr>
+<td><code>-f</code></td>
+<td>Ignore case when sorting (case-insensitive sort).</td>
+<td><code>sort -f file.txt</code></td>
+</tr>
+<tr>
+<td><code>-M</code></td>
+<td>Sort by month (e.g., Jan, Feb, Mar).</td>
+<td><code>sort -M file.txt</code></td>
+</tr>
+<tr>
+<td><code>--version</code></td>
+<td>Display the version of the <code>sort</code> command.</td>
+<td><code>sort --version</code></td>
+</tr>
+<tr>
+<td><code>-h</code></td>
+<td>Sort numbers in human-readable format (e.g., 1K, 2M).</td>
+<td><code>sort -h file.txt</code></td>
+</tr>
+<tr>
+<td><code>--parallel=N</code></td>
+<td>Specify the number of sorts to run in parallel.</td>
+<td><code>sort --parallel=4 file.txt</code></td>
+</tr>
+<tr>
+<td><code>--check</code></td>
+<td>Check whether the input is sorted without modifying it.</td>
+<td><code>sort --check file.txt</code></td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="toc_12">Example: Redirecting stdin to a file</h3>
 
 <div><pre><code class="language-bash">cat &gt; output.txt</code></pre></div>
 
 <p>This command takes input from stdin and saves it into the file <code>output.txt</code>.</p>
 
-<h3 id="toc_11">Example: Redirecting stdin from a file</h3>
+<h3 id="toc_13">Example: Redirecting stdin from a file</h3>
 
 <div><pre><code class="language-bash">cat &lt; input.txt</code></pre></div>
 
 <p>This command reads from the file <code>input.txt</code> and passes its content as stdin to the <code>cat</code> command.</p>
 
-<h3 id="toc_12">2. Standard Output (stdout)</h3>
+<h3 id="toc_14">2. Standard Output (stdout)</h3>
 
 <ul>
 <li><strong>File Descriptor:</strong> 1</li>
@@ -412,7 +669,7 @@ This command will list all <code>.txt</code> files in the current directory and 
 <li><strong>Common Usage:</strong> Displaying the results of commands in the terminal or redirecting the output to files.</li>
 </ul>
 
-<h3 id="toc_13">Example:</h3>
+<h3 id="toc_15">Example:</h3>
 
 <div><pre><code class="language-bash">echo &quot;Hello, World!&quot;</code></pre></div>
 
@@ -424,7 +681,7 @@ This command will list all <code>.txt</code> files in the current directory and 
 
 <p>This command redirects the output of <code>ls</code> (which lists files and directories) to the file <code>directory_listing.txt</code> instead of displaying it in the terminal.</p>
 
-<h3 id="toc_14">3. Standard Error (stderr)</h3>
+<h3 id="toc_16">3. Standard Error (stderr)</h3>
 
 <ul>
 <li><strong>File Descriptor:</strong> 2</li>
@@ -432,7 +689,7 @@ This command will list all <code>.txt</code> files in the current directory and 
 <li><strong>Common Usage:</strong> Displaying error messages from commands.</li>
 </ul>
 
-<h3 id="toc_15">Example:</h3>
+<h3 id="toc_17">Example:</h3>
 
 <p>The above command will try to list a file that doesn’t exist, so the error message will be sent to stderr and printed on the terminal.</p>
 
@@ -442,7 +699,7 @@ This command will list all <code>.txt</code> files in the current directory and 
 
 <p>This command redirects the error message from stderr to a file named <code>error.log</code></p>
 
-<h2 id="toc_16">Combining Standard Output and Error Streams</h2>
+<h2 id="toc_18">Combining Standard Output and Error Streams</h2>
 
 <p>Sometimes, you may want to capture both stdout and stderr in the same file.</p>
 
@@ -464,7 +721,7 @@ This command will list all <code>.txt</code> files in the current directory and 
 
 <p>This allows to capture both the normal output and error messages of a command into the same destination, which can be very useful for debugging or logging purposes.</p>
 
-<h3 id="toc_17">Summary of Redirection Operators</h3>
+<h3 id="toc_19">Summary of Redirection Operators</h3>
 
 <table>
 <thead>
@@ -504,7 +761,7 @@ This command will list all <code>.txt</code> files in the current directory and 
 </tbody>
 </table>
 
-<h2 id="toc_18">Creating and Editing Files With nano?</h2>
+<h2 id="toc_20">Creating and Editing Files With nano?</h2>
 
 <p><code>nano</code> is a simple, user-friendly command-line text editor in Linux. It&#39;s used to create and edit text files directly from the terminal. It provides basic functionalities like creating, editing, saving, and navigating through files. Unlike more complex editors like <code>vim</code> or <code>emacs</code>, <code>nano</code> is intuitive and easy to use, making it ideal for beginners.</p>
 
@@ -542,26 +799,26 @@ timeout=30</code></pre></div>
 
 <p>Then save and exit (<code>Ctrl + O</code> and <code>Ctrl + X</code>).</p>
 
-<h2 id="toc_19">Piping Standard Streams</h2>
+<h2 id="toc_21">Piping Standard Streams</h2>
 
 <p><img align="right" width="900" height="300
 00" src="https://github.com/JAGalarza/Data-Wrangling/blob/main/Images/pipes.png?raw=true alt="Linux Manual"/></p>
 
 <p>Linux allows you to connect the output of one command to the input of another using pipes (<code>|</code>).</p>
 
-<h3 id="toc_20">Pipes in Linux (<code>|</code>)</h3>
+<h3 id="toc_22">Pipes in Linux (<code>|</code>)</h3>
 
 <p>In Linux, pipes (represented by the vertical bar (<code>|</code>) allow the output of one command to become the input for another command. This mechanism is fundamental in Unix-like systems, enabling to chain multiple commands together to perform complex tasks. The output from the first command is passed as input to the second command without needing to write to a file temporarily.</p>
 
-<h3 id="toc_21">How Pipes Work</h3>
+<h3 id="toc_23">How Pipes Work</h3>
 
 <p>In the syntax <code>command1</code> | <code>command2</code>, the output of <code>command1</code> (<code>stdout</code>) is &quot;piped&quot; into <code>command2</code> as its input (<code>stdin</code>). This chain can extend to multiple commands, like <code>command1</code> | <code>command2</code> | <code>command3</code>, where the output of each command is fed into the next one.</p>
 
-<h3 id="toc_22">Basic Commands to Use with Pipes</h3>
+<h3 id="toc_24">Basic Commands to Use with Pipes</h3>
 
 <p>Two common commands frequently used with pipes are <code>cat</code> and <code>echo</code>.</p>
 
-<h4 id="toc_23">The <code>cat</code> command: Concatenate and Display File Content</h4>
+<h4 id="toc_25">The <code>cat</code> command: Concatenate and Display File Content</h4>
 
 <p>This command reads files sequentially, concatenates them, and prints their content to standard output.</p>
 
@@ -571,7 +828,7 @@ timeout=30</code></pre></div>
 
 <p>This command will take the content of <code>conf.txt</code> and pass it to <code>grep</code>, which searches for &quot;word&quot; in the file.</p>
 
-<h3 id="toc_24">Display a Line of Text</h3>
+<h3 id="toc_26">Display a Line of Text</h3>
 
 <p><strong>Example:</strong></p>
 
@@ -583,7 +840,7 @@ timeout=30</code></pre></div>
 
 <p><strong>Example:</strong></p>
 
-<h3 id="toc_25">The <code>head</code> and <code>tail</code> commands: Display First/Last Lines</h3>
+<h3 id="toc_27">The <code>head</code> and <code>tail</code> commands: Display First/Last Lines</h3>
 
 <p>The <code>head</code> command shows the first few lines of a file, while <code>tail</code> shows the last few lines.</p>
 
@@ -595,11 +852,11 @@ timeout=30</code></pre></div>
 
 <p>This command will echo the string &quot;Linux is powerful&quot; and pipe it to <code>wc -w</code>, which counts the number of words. In this case, the output will be <code>3</code>.</p>
 
-<h3 id="toc_26">The <code>wc</code> Command in Linux</h3>
+<h3 id="toc_28">The <code>wc</code> Command in Linux</h3>
 
 <p>The <code>wc</code> command stands for &quot;word count&quot; and is used to count the number of lines, words, and bytes in files or from standard input. It can also count characters or the length of the longest line. </p>
 
-<h4 id="toc_27">Basic Syntax:</h4>
+<h4 id="toc_29">Basic Syntax:</h4>
 
 <div><pre><code class="language-bash">wc [OPTION]... [FILE]...</code></pre></div>
 
@@ -641,18 +898,18 @@ timeout=30</code></pre></div>
 </tbody>
 </table>
 
-<h3 id="toc_28">Piping Commands</h3>
+<h3 id="toc_30">Piping Commands</h3>
 
 <div><pre><code class="language-bash">cat myfile.txt | grep &quot;error&quot; | wc -l | head -n 1</code></pre></div>
 
 <p>This pipeline finds and counts the lines containing the word &quot;error&quot; in <code>myfile.txt</code> and shows the first result</p>
 
-<h2 id="toc_29">Combining Pipes and Redirection</h2>
+<h2 id="toc_31">Combining Pipes and Redirection</h2>
 
 <p><img align="right" width="900" height="200
 00" src="https://github.com/JAGalarza/Data-Wrangling/blob/main/Images/chain.jpg?raw=true alt="Linux Manual"/></p>
 
-<h3 id="toc_30">Redirecting stdout of a pipe to a file and stderr to another file</h3>
+<h3 id="toc_32">Redirecting stdout of a pipe to a file and stderr to another file</h3>
 
 <p><strong>Example:</strong></p>
 
@@ -666,7 +923,7 @@ timeout=30</code></pre></div>
 <li><code>2&gt; error.txt</code>: Redirects any stderr (errors, if the file doesn&#39;t exist, or permission issues) to <code>error.txt</code>.</li>
 </ul>
 
-<h2 id="toc_31">Redirecting stdout to one file and both stdout and stderr to another file</h2>
+<h2 id="toc_33">Redirecting stdout to one file and both stdout and stderr to another file</h2>
 
 <p><strong>Example:</strong></p>
 
@@ -678,7 +935,7 @@ timeout=30</code></pre></div>
 <li><p><code>&gt; line_count.txt</code> writes the line count result to <code>line_count.txt</code>.</p></li>
 </ul>
 
-<h2 id="toc_32">Redirecting stdout to one file, stderr to another, and stdout and stderr together to the terminal</h2>
+<h2 id="toc_34">Redirecting stdout to one file, stderr to another, and stdout and stderr together to the terminal</h2>
 
 <p><strong>Example:</strong></p>
 
