@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Exercise_5_Solutions</title>
+
+
+<style type="text/css">
+body {
+  font-family: Helvetica, arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: white;
+  padding: 30px; }
+
+body > *:first-child {
+  margin-top: 0 !important; }
+body > *:last-child {
+  margin-bottom: 0 !important; }
+
+a {
+  color: #4183C4; }
+a.absent {
+  color: #cc0000; }
+a.anchor {
+  display: block;
+  padding-left: 30px;
+  margin-left: -30px;
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0; }
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 20px 0 10px;
+  padding: 0;
+  font-weight: bold;
+  -webkit-font-smoothing: antialiased;
+  cursor: text;
+  position: relative; }
+
+h1:hover a.anchor, h2:hover a.anchor, h3:hover a.anchor, h4:hover a.anchor, h5:hover a.anchor, h6:hover a.anchor {
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA09pVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoMTMuMCAyMDEyMDMwNS5tLjQxNSAyMDEyLzAzLzA1OjIxOjAwOjAwKSAgKE1hY2ludG9zaCkiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OUM2NjlDQjI4ODBGMTFFMTg1ODlEODNERDJBRjUwQTQiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OUM2NjlDQjM4ODBGMTFFMTg1ODlEODNERDJBRjUwQTQiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo5QzY2OUNCMDg4MEYxMUUxODU4OUQ4M0REMkFGNTBBNCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo5QzY2OUNCMTg4MEYxMUUxODU4OUQ4M0REMkFGNTBBNCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PsQhXeAAAABfSURBVHjaYvz//z8DJYCRUgMYQAbAMBQIAvEqkBQWXI6sHqwHiwG70TTBxGaiWwjCTGgOUgJiF1J8wMRAIUA34B4Q76HUBelAfJYSA0CuMIEaRP8wGIkGMA54bgQIMACAmkXJi0hKJQAAAABJRU5ErkJggg==) no-repeat 10px center;
+  text-decoration: none; }
+
+h1 tt, h1 code {
+  font-size: inherit; }
+
+h2 tt, h2 code {
+  font-size: inherit; }
+
+h3 tt, h3 code {
+  font-size: inherit; }
+
+h4 tt, h4 code {
+  font-size: inherit; }
+
+h5 tt, h5 code {
+  font-size: inherit; }
+
+h6 tt, h6 code {
+  font-size: inherit; }
+
+h1 {
+  font-size: 28px;
+  color: black; }
+
+h2 {
+  font-size: 24px;
+  border-bottom: 1px solid #cccccc;
+  color: black; }
+
+h3 {
+  font-size: 18px; }
+
+h4 {
+  font-size: 16px; }
+
+h5 {
+  font-size: 14px; }
+
+h6 {
+  color: #777777;
+  font-size: 14px; }
+
+p, blockquote, ul, ol, dl, li, table, pre {
+  margin: 15px 0; }
+
+hr {
+  background: transparent url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAECAYAAACtBE5DAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBNYWNpbnRvc2giIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OENDRjNBN0E2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OENDRjNBN0I2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo4Q0NGM0E3ODY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo4Q0NGM0E3OTY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PqqezsUAAAAfSURBVHjaYmRABcYwBiM2QSA4y4hNEKYDQxAEAAIMAHNGAzhkPOlYAAAAAElFTkSuQmCC) repeat-x 0 0;
+  border: 0 none;
+  color: #cccccc;
+  height: 4px;
+  padding: 0;
+}
+
+body > h2:first-child {
+  margin-top: 0;
+  padding-top: 0; }
+body > h1:first-child {
+  margin-top: 0;
+  padding-top: 0; }
+  body > h1:first-child + h2 {
+    margin-top: 0;
+    padding-top: 0; }
+body > h3:first-child, body > h4:first-child, body > h5:first-child, body > h6:first-child {
+  margin-top: 0;
+  padding-top: 0; }
+
+a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+  margin-top: 0;
+  padding-top: 0; }
+
+h1 p, h2 p, h3 p, h4 p, h5 p, h6 p {
+  margin-top: 0; }
+
+li p.first {
+  display: inline-block; }
+li {
+  margin: 0; }
+ul, ol {
+  padding-left: 30px; }
+
+ul :first-child, ol :first-child {
+  margin-top: 0; }
+
+dl {
+  padding: 0; }
+  dl dt {
+    font-size: 14px;
+    font-weight: bold;
+    font-style: italic;
+    padding: 0;
+    margin: 15px 0 5px; }
+    dl dt:first-child {
+      padding: 0; }
+    dl dt > :first-child {
+      margin-top: 0; }
+    dl dt > :last-child {
+      margin-bottom: 0; }
+  dl dd {
+    margin: 0 0 15px;
+    padding: 0 15px; }
+    dl dd > :first-child {
+      margin-top: 0; }
+    dl dd > :last-child {
+      margin-bottom: 0; }
+
+blockquote {
+  border-left: 4px solid #dddddd;
+  padding: 0 15px;
+  color: #777777; }
+  blockquote > :first-child {
+    margin-top: 0; }
+  blockquote > :last-child {
+    margin-bottom: 0; }
+
+table {
+  padding: 0;border-collapse: collapse; }
+  table tr {
+    border-top: 1px solid #cccccc;
+    background-color: white;
+    margin: 0;
+    padding: 0; }
+    table tr:nth-child(2n) {
+      background-color: #f8f8f8; }
+    table tr th {
+      font-weight: bold;
+      border: 1px solid #cccccc;
+      margin: 0;
+      padding: 6px 13px; }
+    table tr td {
+      border: 1px solid #cccccc;
+      margin: 0;
+      padding: 6px 13px; }
+    table tr th :first-child, table tr td :first-child {
+      margin-top: 0; }
+    table tr th :last-child, table tr td :last-child {
+      margin-bottom: 0; }
+
+img {
+  max-width: 100%; }
+
+span.frame {
+  display: block;
+  overflow: hidden; }
+  span.frame > span {
+    border: 1px solid #dddddd;
+    display: block;
+    float: left;
+    overflow: hidden;
+    margin: 13px 0 0;
+    padding: 7px;
+    width: auto; }
+  span.frame span img {
+    display: block;
+    float: left; }
+  span.frame span span {
+    clear: both;
+    color: #333333;
+    display: block;
+    padding: 5px 0 0; }
+span.align-center {
+  display: block;
+  overflow: hidden;
+  clear: both; }
+  span.align-center > span {
+    display: block;
+    overflow: hidden;
+    margin: 13px auto 0;
+    text-align: center; }
+  span.align-center span img {
+    margin: 0 auto;
+    text-align: center; }
+span.align-right {
+  display: block;
+  overflow: hidden;
+  clear: both; }
+  span.align-right > span {
+    display: block;
+    overflow: hidden;
+    margin: 13px 0 0;
+    text-align: right; }
+  span.align-right span img {
+    margin: 0;
+    text-align: right; }
+span.float-left {
+  display: block;
+  margin-right: 13px;
+  overflow: hidden;
+  float: left; }
+  span.float-left span {
+    margin: 13px 0 0; }
+span.float-right {
+  display: block;
+  margin-left: 13px;
+  overflow: hidden;
+  float: right; }
+  span.float-right > span {
+    display: block;
+    overflow: hidden;
+    margin: 13px auto 0;
+    text-align: right; }
+
+code, tt {
+  margin: 0 2px;
+  padding: 0 5px;
+  white-space: nowrap;
+  border: 1px solid #eaeaea;
+  background-color: #f8f8f8;
+  border-radius: 3px; }
+
+pre code {
+  margin: 0;
+  padding: 0;
+  white-space: pre;
+  border: none;
+  background: transparent; }
+
+.highlight pre {
+  background-color: #f8f8f8;
+  border: 1px solid #cccccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px; }
+
+pre {
+  background-color: #f8f8f8;
+  border: 1px solid #cccccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px; }
+  pre code, pre tt {
+    background-color: transparent;
+    border: none; }
+
+sup {
+    font-size: 0.83em;
+    vertical-align: super;
+    line-height: 0;
+}
+
+kbd {
+  display: inline-block;
+  padding: 3px 5px;
+  font-size: 11px;
+  line-height: 10px;
+  color: #555;
+  vertical-align: middle;
+  background-color: #fcfcfc;
+  border: solid 1px #ccc;
+  border-bottom-color: #bbb;
+  border-radius: 3px;
+  box-shadow: inset 0 -1px 0 #bbb
+}
+
+* {
+	-webkit-print-color-adjust: exact;
+}
+@media screen and (min-width: 914px) {
+    body {
+        width: 854px;
+        margin:0 auto;
+    }
+}
+@media print {
+	table, pre {
+		page-break-inside: avoid;
+	}
+	pre {
+		word-wrap: break-word;
+	}
+  body {
+    padding: 2cm; 
+  }
+}
+</style>
+
+
+</head>
+
+<body>
+
+<h3 id="toc_0">Task 1</h3>
+
+<p>The idea behind using a pipeline is to <strong>avoid writing intermediate files to disk</strong>, reducing the need for I/O operations and speeding up the process. Each command takes its input from the previous one and passes its output to the next, using the pipe (<code>|</code>) symbol.</p>
+
+<h3 id="toc_1">Pipeline Command</h3>
+
+<div><pre><code class="language-none">bwa mem -M tgmothYY.fa R1.fastq R2.fastq | \
+samtools view -S -b - | \
+samtools sort -o bwa_mem_out_sorted.bam &amp;&amp; \
+samtools index bwa_mem_out_sorted.bam</code></pre></div>
+
+<ul>
+<li>  This command performs the alignment of the paired-end reads (<code>R1.fastq</code> and <code>R2.fastq</code>) against the reference genome (<code>tgmothYY.fa</code>).</li>
+<li>  <strong>Output</strong>: Instead of writing the output to a SAM file, it is passed directly to the next command through a pipe (<code>|</code>)</li>
+</ul>
+
+<div><pre><code class="language-none">bwa mem -M tgmothYY.fa R1.fastq R2.fastq</code></pre></div>
+
+<p><strong><code>samtools view</code></strong>:</p>
+
+<ul>
+<li>  This command converts the output from <code>bwa mem</code> (which is in SAM format) into BAM format.</li>
+<li>  The <code>-S</code> flag tells <code>samtools</code> that the input is in SAM format, and the <code>-b</code> flag specifies that the output should be in BAM format.</li>
+<li>  The <code>-</code> symbol tells <code>samtools</code> to read from <strong>standard input</strong> (which is the output of <code>bwa mem</code>).</li>
+<li>  <strong>Output</strong>: The BAM data is passed directly to the next command via another pipe.</li>
+</ul>
+
+<div><pre><code class="language-none">samtools view -S -b -</code></pre></div>
+
+<p><strong><code>samtools sort</code></strong>:</p>
+
+<ul>
+<li>  This command takes the unsorted BAM data from the previous step and sorts it by genomic coordinates.</li>
+<li>  The <code>-o</code> option specifies the output file, in this case, <code>bwa_mem_out_sorted.bam</code>.</li>
+<li>  <strong>Output</strong>: The sorted BAM file is written to <code>bwa_mem_out_sorted.bam</code>.</li>
+</ul>
+
+<div><pre><code class="language-none">samtools sort -o bwa_mem_out_sorted.bam</code></pre></div>
+
+<p><strong><code>samtools index</code></strong>:</p>
+
+<ul>
+<li>  This final command creates an index for the sorted BAM file, allowing efficient random access to specific regions of the file.</li>
+<li>  The <code>&amp;&amp;</code> operator ensures that this command only runs if the previous commands succeeded.</li>
+</ul>
+
+<div><pre><code class="language-none">samtools index bwa_mem_out_sorted.bam</code></pre></div>
+
+<h3 id="toc_2">Key Elements of the Pipeline:</h3>
+
+<ul>
+<li>  <strong>Pipes (<code>|</code>)</strong>: These are used to pass the output of one command directly as input to the next, without creating intermediate files. This reduces disk I/O and speeds up the workflow.</li>
+<li>  <strong>Redirection (<code>-</code>)</strong>: The <code>-</code> symbol in <code>samtools view</code> tells it to read from standard input, which is the output of <code>bwa mem</code>.</li>
+<li>  <strong>Chaining with <code>&amp;&amp;</code></strong>: The <code>samtools index</code> command is executed only if all previous steps succeed, ensuring that errors in alignment, conversion, or sorting stop the process before indexing</li>
+</ul>
+
+<p><strong>Task 2</strong>: Use the <code>cut</code> command to extract the chromosome, position, and coverage depth (columns 1, 2, and 4) from the output of the <code>samtools mpileup</code> command and save it to <code>coverage_depth.txt</code></p>
+
+<div><pre><code class="language-none">samtools mpileup bwa_mem_out_sorted.bam | cut -f1,2,4 &gt; coverage_depth.txt</code></pre></div>
+
+<p><strong>Bonus task 2:</strong> Use <code>awk</code> to find the chromosome with the highest coverage.</p>
+
+<div><pre><code class="language-none">cat coverage_depth.txt | 
+awk &#39;{cov[$1] += $2} END {for (chr in cov) print chr, cov[chr]}&#39; | \
+sort -k2,2nr | head -n 1</code></pre></div>
+
+<p><code>awk &#39;{cov[$1] += $2} END {for (chr in cov) print chr, cov[chr]}&#39;</code>: The awk command aggregates the coverage depth (<code>$2</code>) by chromosome (<code>$1</code>). The associative array <code>cov</code> holds the sum of coverage depths for each chromosome. In the <code>END</code> block, it prints each chromosome and its total coverage.</p>
+
+<p><code>sort -k2,2nr</code>:
+This sorts the output by the second column (total coverage), in numerical and reverse order (<code>nr</code>), so the chromosome with the highest coverage appears first.</p>
+
+<p><code>head -n 1</code>:
+This extracts the first line, which corresponds to the chromosome with the highest total coverage.</p>
+
+<p><strong>Task 3</strong>: use <code>awk</code> aritmetic operators to find the average depth form <code>coverage_depth.txt</code>.</p>
+
+<div><pre><code class="language-none">awk &#39;{sum+=$3; count++} END {if (count &gt; 0) print &quot;Average coverage depth:&quot;, sum/count}&#39; coverage_depth.txt</code></pre></div>
+
+<p><strong>Task 4</strong> Identify how many postions are below a depth threshold (i.e. 2) from <code>coverage_depth.txt</code></p>
+
+<div><pre><code class="language-none">awk &#39;$1 &gt; 2&#39; coverage_depth.txt | wc -l</code></pre></div>
+
+<p><strong>Task 5</strong>: Use <code>paste</code> to concatenate the original <code>mpileup</code> output with the extracted coverage depth from the file <code>coverage_depth.txt</code>.</p>
+
+<div><pre><code class="language-none">samtools mpileup bwa_mem_out_sorted.bam &gt; original_pileup.txt
+paste original_pileup.txt coverage_depth.txt</code></pre></div>
+
+<p><strong>Task 6</strong>: Print the first line of the alignment section of the <code>bwa_mem_out.sam</code> file. Identify the different fields. (Hint: Fields are separated by <code>tab</code> delimeters.</p>
+
+<div><pre><code class="language-none">awk &#39;$1 !~ /^@/ {print; exit}&#39; bwa_mem_out.sam</code></pre></div>
+
+<p><code>$1 !~ /^@/</code>: This checks that the first field (<code>$1</code>) does not start with an <code>@</code> symbol, which indicates it&#39;s not a header line.</p>
+
+<p>Header lines in a SAM file start with <code>@</code> (i.e., <code>@SQ</code>, <code>@PG</code>), while alignment lines do not.
+<code>{print; exit}</code>: Once it finds the first line that matches the condition (i.e., the first alignment line), it prints that line and then exits, ensuring only the first alignment line is printed.</p>
+
+<p><strong>Task 7</strong> Calculate the avergade mapping quality from the <code>bwa_mem_out.sam</code>file. Average mapping quality helps assess the overall confidence in the read alignments, which is important for downstream analysis such as variant calling. (Hint: <code>*</code> in the third column indicates that the read is unmapped. Mapping quality is on the 5th field.</p>
+
+<div><pre><code class="language-none">awk &#39;$3 != &quot;*&quot;{sum+=$5; count++} END {print &quot;Average mapping quality:&quot;, sum/count}&#39; bwa_mem_out.sam</code></pre></div>
+
+<p><strong>Task 8</strong>: From the output of the <code>mplieip</code> command, filter for Low-Coverage Regions (&lt;2) and Extract Coordinates</p>
+
+<div><pre><code class="language-none">samtools mpileup bwa_mem_out_sorted.bam | awk &#39;$4 &lt; 2&#39; &gt; low_coverage_coords.txt</code></pre></div>
+
+<p><strong>Task 9</strong> Extract positions where the coverage depth is between 20 and 50 from <code>coverage_depth.txt</code></p>
+
+<div><pre><code class="language-none">awk &#39;$1 &gt;= 20 &amp;&amp; $1 &lt;= 50&#39; coverage_depth.txt &gt; coverage_20_50.txt</code></pre></div>
+
+<p><code>&gt;= 20 &amp;&amp; &lt;= 50</code>: This condition checks if the value in the first column is greater than or equal to 20 and less than or equal to 50. Both conditions must be true (<code>&amp;&amp;</code> is the logical AND operator) for the line to be selected.</p>
+
+<p><strong>Task 10</strong>: Using the <code>mpileup</code> output, count how many positions have coverage depth greater than or equal to 30</p>
+
+<div><pre><code class="language-none">samtools mpileup bwa_mem_out_sorted.bam | awk &#39;$4 &gt;= 30&#39; | wc -l</code></pre></div>
+
+<p><strong>Task 11</strong>: Use redirection to filter a BAM file for reads aligned to a specific chromosome and redirect error messages (if any) to <code>error_log.txt</code>. The chromosome names are <code>YY_tarseq_N_arrow</code></p>
+
+<div><pre><code class="language-none">samtools view bwa_mem_out_sorted.bam &#39;YY_tarseq_3121111_arrow&#39; 2&gt; error_log.txt</code></pre></div>
+
+<p><strong>Task 12</strong>: Extract the read names (column 1) and mapping qualities (column 5) from <code>bwa_mem_out_sorted.bam</code> into separate files and use <code>paste</code> to combine them</p>
+
+<div><pre><code class="language-none">samtools view bwa_mem_out_sorted.bam | cut -f1 &gt; read_names.txt
+samtools view bwa_mem_out_sorted.bam | cut -f5 &gt; map_qualities.txt
+paste read_names.txt map_qualities.txt</code></pre></div>
+
+<p><strong>Task 13</strong>: Use <code>grep</code> with <code>samtools view</code> to extract reads that contain a <code>AGCTTAGG</code> sequence pattern and display them.</p>
+
+<div><pre><code class="language-none">samtools view bwa_mem_out_sorted.bam | grep &#39;AGCTTAGG&#39;</code></pre></div>
+
+<p><strong>Task 14</strong>: Extract coverage depth and read quality from <code>bwa_mem_out_sorted.bam</code> and combine them using <code>paste</code>.</p>
+
+<div><pre><code class="language-none">samtools mpileup bwa_mem_out_sorted.bam | cut -f4 &gt; coverage.txt
+samtools view bwa_mem_out_sorted.bam | cut -f5 &gt; qualities.txt
+paste coverage.txt qualities.txt</code></pre></div>
+
+<p><strong>Task 15</strong>: Use <code>awk</code> with boolean operators to filter out reads that have both high coverage (&gt;=30) and high mapping quality (&gt;=20).</p>
+
+<div><pre><code class="language-none">samtools mpileup bwa_mem_out_sorted.bam | awk &#39;$4 &gt;= 30 &amp;&amp; $5 &gt;= 20&#39;</code></pre></div>
+
+<p><strong>Task 16</strong>: Use <code>cut</code>, <code>sort</code>, and <code>uniq</code> to count how many unique read names are in the <code>bwa_mem_out_sorted.bam</code> file.</p>
+
+<div><pre><code class="language-none">samtools view bwa_mem_out_sorted.bam | cut -f1 | sort | uniq | wc -l</code></pre></div>
+
+<p><strong>Task 17</strong>: Using the <code>bwa_mem_out_sorted.bam</code> file, extract coverage depth, read quality, and mapping quality, and combine them using paste into a file called <code>metrics.txt</code>.</p>
+
+<div><pre><code class="language-none">samtools mpileup bwa_mem_out_sorted.bam | cut -f4 &gt; coverage.txt
+samtools view bwa_mem_out_sorted.bam | cut -f5 &gt; qualities.txt
+samtools view bwa_mem_out_sorted.bam | cut -f6 &gt; map_qual.txt
+paste coverage.txt qualities.txt map_qual.txt &gt; metrics.txt</code></pre></div>
+
+<p><strong>Task 18</strong>: Extract reads with a mapping quality &gt;=20 and save them to a new file called <code>high_quality_reads.sam</code>.</p>
+
+<div><pre><code class="language-none">samtools view bwa_mem_out_sorted.bam | awk &#39;$5 &gt;= 20&#39; &gt; high_quality_reads.sam</code></pre></div>
+
+<p><strong>Task 19</strong>: Count how many reads map to chromosome(s) <code>YY_tarseq_1-1052_arrow</code>.</p>
+
+<div><pre><code class="language-none">samtools view bwa_mem_out_sorted.bam &#39;YY_tarseq_1-1052_arrow&#39; | wc -l</code></pre></div>
+
+<p><strong>Task 20</strong>: Sort the positions in the mpileup output by their coverage depth (column 4).</p>
+
+<div><pre><code class="language-none">samtools mpileup bwa_mem_out_sorted.bam | sort -k4,4n</code></pre></div>
+
+
+
+
+</body>
+
+</html>
