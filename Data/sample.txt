@@ -1,0 +1,8 @@
+This is the first line of the file.
+The quick brown cat jumps over the lazy dog.
+Linux v2.4 is a powerful operating system.
+Linux V.3.6 allows you to build custom workflows.
+Pipes are used to chain commands together.
+Nano is a simple text editor.
+Nano is often used for quick edits.
+This is the last line of the file.
