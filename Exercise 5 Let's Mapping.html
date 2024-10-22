@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Exercise 5 Let's Mapping</title>
+
+
+<style type="text/css">
+body {
+  font-family: Helvetica, arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: white;
+  padding: 30px; }
+
+body > *:first-child {
+  margin-top: 0 !important; }
+body > *:last-child {
+  margin-bottom: 0 !important; }
+
+a {
+  color: #4183C4; }
+a.absent {
+  color: #cc0000; }
+a.anchor {
+  display: block;
+  padding-left: 30px;
+  margin-left: -30px;
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0; }
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 20px 0 10px;
+  padding: 0;
+  font-weight: bold;
+  -webkit-font-smoothing: antialiased;
+  cursor: text;
+  position: relative; }
+
+h1:hover a.anchor, h2:hover a.anchor, h3:hover a.anchor, h4:hover a.anchor, h5:hover a.anchor, h6:hover a.anchor {
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA09pVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoMTMuMCAyMDEyMDMwNS5tLjQxNSAyMDEyLzAzLzA1OjIxOjAwOjAwKSAgKE1hY2ludG9zaCkiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OUM2NjlDQjI4ODBGMTFFMTg1ODlEODNERDJBRjUwQTQiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OUM2NjlDQjM4ODBGMTFFMTg1ODlEODNERDJBRjUwQTQiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo5QzY2OUNCMDg4MEYxMUUxODU4OUQ4M0REMkFGNTBBNCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo5QzY2OUNCMTg4MEYxMUUxODU4OUQ4M0REMkFGNTBBNCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PsQhXeAAAABfSURBVHjaYvz//z8DJYCRUgMYQAbAMBQIAvEqkBQWXI6sHqwHiwG70TTBxGaiWwjCTGgOUgJiF1J8wMRAIUA34B4Q76HUBelAfJYSA0CuMIEaRP8wGIkGMA54bgQIMACAmkXJi0hKJQAAAABJRU5ErkJggg==) no-repeat 10px center;
+  text-decoration: none; }
+
+h1 tt, h1 code {
+  font-size: inherit; }
+
+h2 tt, h2 code {
+  font-size: inherit; }
+
+h3 tt, h3 code {
+  font-size: inherit; }
+
+h4 tt, h4 code {
+  font-size: inherit; }
+
+h5 tt, h5 code {
+  font-size: inherit; }
+
+h6 tt, h6 code {
+  font-size: inherit; }
+
+h1 {
+  font-size: 28px;
+  color: black; }
+
+h2 {
+  font-size: 24px;
+  border-bottom: 1px solid #cccccc;
+  color: black; }
+
+h3 {
+  font-size: 18px; }
+
+h4 {
+  font-size: 16px; }
+
+h5 {
+  font-size: 14px; }
+
+h6 {
+  color: #777777;
+  font-size: 14px; }
+
+p, blockquote, ul, ol, dl, li, table, pre {
+  margin: 15px 0; }
+
+hr {
+  background: transparent url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAECAYAAACtBE5DAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBNYWNpbnRvc2giIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OENDRjNBN0E2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OENDRjNBN0I2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo4Q0NGM0E3ODY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo4Q0NGM0E3OTY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PqqezsUAAAAfSURBVHjaYmRABcYwBiM2QSA4y4hNEKYDQxAEAAIMAHNGAzhkPOlYAAAAAElFTkSuQmCC) repeat-x 0 0;
+  border: 0 none;
+  color: #cccccc;
+  height: 4px;
+  padding: 0;
+}
+
+body > h2:first-child {
+  margin-top: 0;
+  padding-top: 0; }
+body > h1:first-child {
+  margin-top: 0;
+  padding-top: 0; }
+  body > h1:first-child + h2 {
+    margin-top: 0;
+    padding-top: 0; }
+body > h3:first-child, body > h4:first-child, body > h5:first-child, body > h6:first-child {
+  margin-top: 0;
+  padding-top: 0; }
+
+a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+  margin-top: 0;
+  padding-top: 0; }
+
+h1 p, h2 p, h3 p, h4 p, h5 p, h6 p {
+  margin-top: 0; }
+
+li p.first {
+  display: inline-block; }
+li {
+  margin: 0; }
+ul, ol {
+  padding-left: 30px; }
+
+ul :first-child, ol :first-child {
+  margin-top: 0; }
+
+dl {
+  padding: 0; }
+  dl dt {
+    font-size: 14px;
+    font-weight: bold;
+    font-style: italic;
+    padding: 0;
+    margin: 15px 0 5px; }
+    dl dt:first-child {
+      padding: 0; }
+    dl dt > :first-child {
+      margin-top: 0; }
+    dl dt > :last-child {
+      margin-bottom: 0; }
+  dl dd {
+    margin: 0 0 15px;
+    padding: 0 15px; }
+    dl dd > :first-child {
+      margin-top: 0; }
+    dl dd > :last-child {
+      margin-bottom: 0; }
+
+blockquote {
+  border-left: 4px solid #dddddd;
+  padding: 0 15px;
+  color: #777777; }
+  blockquote > :first-child {
+    margin-top: 0; }
+  blockquote > :last-child {
+    margin-bottom: 0; }
+
+table {
+  padding: 0;border-collapse: collapse; }
+  table tr {
+    border-top: 1px solid #cccccc;
+    background-color: white;
+    margin: 0;
+    padding: 0; }
+    table tr:nth-child(2n) {
+      background-color: #f8f8f8; }
+    table tr th {
+      font-weight: bold;
+      border: 1px solid #cccccc;
+      margin: 0;
+      padding: 6px 13px; }
+    table tr td {
+      border: 1px solid #cccccc;
+      margin: 0;
+      padding: 6px 13px; }
+    table tr th :first-child, table tr td :first-child {
+      margin-top: 0; }
+    table tr th :last-child, table tr td :last-child {
+      margin-bottom: 0; }
+
+img {
+  max-width: 100%; }
+
+span.frame {
+  display: block;
+  overflow: hidden; }
+  span.frame > span {
+    border: 1px solid #dddddd;
+    display: block;
+    float: left;
+    overflow: hidden;
+    margin: 13px 0 0;
+    padding: 7px;
+    width: auto; }
+  span.frame span img {
+    display: block;
+    float: left; }
+  span.frame span span {
+    clear: both;
+    color: #333333;
+    display: block;
+    padding: 5px 0 0; }
+span.align-center {
+  display: block;
+  overflow: hidden;
+  clear: both; }
+  span.align-center > span {
+    display: block;
+    overflow: hidden;
+    margin: 13px auto 0;
+    text-align: center; }
+  span.align-center span img {
+    margin: 0 auto;
+    text-align: center; }
+span.align-right {
+  display: block;
+  overflow: hidden;
+  clear: both; }
+  span.align-right > span {
+    display: block;
+    overflow: hidden;
+    margin: 13px 0 0;
+    text-align: right; }
+  span.align-right span img {
+    margin: 0;
+    text-align: right; }
+span.float-left {
+  display: block;
+  margin-right: 13px;
+  overflow: hidden;
+  float: left; }
+  span.float-left span {
+    margin: 13px 0 0; }
+span.float-right {
+  display: block;
+  margin-left: 13px;
+  overflow: hidden;
+  float: right; }
+  span.float-right > span {
+    display: block;
+    overflow: hidden;
+    margin: 13px auto 0;
+    text-align: right; }
+
+code, tt {
+  margin: 0 2px;
+  padding: 0 5px;
+  white-space: nowrap;
+  border: 1px solid #eaeaea;
+  background-color: #f8f8f8;
+  border-radius: 3px; }
+
+pre code {
+  margin: 0;
+  padding: 0;
+  white-space: pre;
+  border: none;
+  background: transparent; }
+
+.highlight pre {
+  background-color: #f8f8f8;
+  border: 1px solid #cccccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px; }
+
+pre {
+  background-color: #f8f8f8;
+  border: 1px solid #cccccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px; }
+  pre code, pre tt {
+    background-color: transparent;
+    border: none; }
+
+sup {
+    font-size: 0.83em;
+    vertical-align: super;
+    line-height: 0;
+}
+
+kbd {
+  display: inline-block;
+  padding: 3px 5px;
+  font-size: 11px;
+  line-height: 10px;
+  color: #555;
+  vertical-align: middle;
+  background-color: #fcfcfc;
+  border: solid 1px #ccc;
+  border-bottom-color: #bbb;
+  border-radius: 3px;
+  box-shadow: inset 0 -1px 0 #bbb
+}
+
+* {
+	-webkit-print-color-adjust: exact;
+}
+@media screen and (min-width: 914px) {
+    body {
+        width: 854px;
+        margin:0 auto;
+    }
+}
+@media print {
+	table, pre {
+		page-break-inside: avoid;
+	}
+	pre {
+		word-wrap: break-word;
+	}
+  body {
+    padding: 2cm; 
+  }
+}
+</style>
+
+
+</head>
+
+<body>
+
+<h1 id="toc_0">Exercise 5, Let&#39;s Map</h1>
+
+<p><strong>Step 1:</strong> Index the Reference Genome Using BWA
+Before mapping your FASTQ reads to the reference genome using BWA, the reference genome file (in this case, tgmothYY.fa) needs to be indexed. Indexing creates auxiliary files that allow BWA to quickly access and align the reads against the genome. These index files speed up the process by allowing the software to efficiently locate regions in the reference genome for alignment.</p>
+
+<p>Indexing Important Because:</p>
+
+<ul>
+<li><p>Speeds Up Alignment: BWA can quickly locate positions in the genome using the indexed data, making alignment significantly faster.</p></li>
+<li><p>Efficient Memory Usage: Indexing allows the software to handle large genomes more efficiently by reducing memory usage during the alignment process.</p></li>
+</ul>
+
+<p>Command to Index the Genome:</p>
+
+<div><pre><code class="language-none">bwa index tgmothYY.fa</code></pre></div>
+
+<p>This is lenthtly process and so the index has been created for you. In location X you will find the indexing files:</p>
+
+<div><pre><code class="language-none">tgmothYY.fa.bwt
+tgmothYY.fa.pac
+tgmothYY.fa.ann
+tgmothYY.fa.amb
+tgmothYY.fa.sa</code></pre></div>
+
+<p>These files are created from the reference genome and are used to optimize the alignment process.
+<code>.bwt</code>: Burrows-Wheeler Transform of the reference genome.
+<code>.pac:</code> Packed representation of the genome.
+<code>.sa</code>: Suffix array for efficient querying.
+<code>.amb</code> and `.ann: Auxiliary files for the reference.</p>
+
+<p><strong>Step 2:</strong> Align FASTQ Reads Using BWA-MEM
+The next step in the protocol is to map the paired-end FASTQ reads to the indexed reference genome using the BWA-MEM algorithm. The bwa mem command aligns the sequencing reads from your FASTQ files (in this case, R1<em>1000.fastq and R2</em>1000.fastq) to the reference genome tgmothYY.fa.</p>
+
+<p>Command to Run BWA-MEM:</p>
+
+<div><pre><code class="language-bash">bwa mem -M tgmothYY.fa R1_1000.fastq R2_1000.fastq -o bwa_mem_out.sam</code></pre></div>
+
+<p><strong>Breakdown of the Command:</strong></p>
+
+<ul>
+<li>  <strong>bwa mem</strong>: This runs the BWA-MEM algorithm, which is optimized for aligning relatively long reads (typically ≥70 bp) from high-throughput sequencing technologies.</li>
+<li>  <strong>-M</strong>: This flag marks shorter split hits as secondary alignments. This is important for downstream processing by tools like Picard or GATK which expect secondary alignments to be marked properly.</li>
+<li>  <strong>tgmothYY.fa</strong>: The reference genome that was indexed in the previous step.</li>
+<li><p><strong>R1_1000.fastq and R2_1000.fastq</strong>: The paired-end FASTQ files.</p></li>
+<li><p>R1_1000.fastq contains the forward reads (read 1).</p></li>
+<li><p>R2_1000.fastq contains the reverse reads (read 2).</p></li>
+<li><p><strong>-o bwa_mem_out</strong>: Specifies the output file where the alignment results will be stored. In this case, the output will be written to a file named bwa_mem_out.sam</p></li>
+</ul>
+
+<h4 id="toc_1">What Happens During Alignment?</h4>
+
+<ul>
+<li> <strong>Pairing of Reads</strong>: BWA-MEM reads both the forward (<code>R1_1000.fastq</code>) and reverse (<code>R2_1000.fastq</code>) sequences and attempts to align them to the reference genome (<code>tgmothYY.fa</code>).</li>
+<li> <strong>Split Read Handling</strong>: If a read maps across multiple regions, BWA-MEM marks split hits as secondary (controlled by the <code>-M</code> flag), which helps downstream tools identify such cases.</li>
+<li> <strong>SAM Format Output</strong>: The result of the alignment is written to the output file (<code>bwa_mem_out</code>) in <strong>SAM (Sequence Alignment/Map) format</strong>. This format contains information about where each read aligns in the reference genome, the quality of the alignment, and flags for different types of alignments (e.g., secondary, supplementary).</li>
+</ul>
+
+<p>See the contents of the bwa<em>mem</em>out.sam</p>
+
+<div><pre><code class="language-none">head bwa_mem_out.sam</code></pre></div>
+
+<ul>
+<li><p><strong><code>@SQ</code></strong>: This is a SAM header tag. The <code>@SQ</code> (Sequence) line specifies details about the reference sequences (contigs or chromosomes) used during alignment.</p></li>
+<li><p><strong><code>SN:YY_tarseq_0_arrow</code> and <code>SN:YY_tarseq_1_arrow</code></strong>: These are the <strong>sequence names</strong> (<code>SN</code>), representing reference sequences (or contigs) from the genome you are aligning against. </p></li>
+<li><p><strong><code>LN:8310</code> and <code>LN:6067</code></strong>: These values refer to the <strong>lengths</strong> (<code>LN</code>) of the reference sequences in base pairs.</p>
+
+<ul>
+<li>  <code>YY_tarseq_0_arrow</code> has a length of 8310 bases.</li>
+<li>  <code>YY_tarseq_1_arrow</code> has a length of 6067 bases.</li>
+</ul></li>
+</ul>
+
+<p><strong>Step 3: Convert the SAM to BAM</strong>: This is done using <code>samtools</code> to compress and sort the alignments.</p>
+
+<div><pre><code class="language-none">samtools view -S -b bwa_mem_out.sam &gt; bwa_mem_out.bam</code></pre></div>
+
+<p>Compare the sizes of the bwa<em>mem</em>out.sam and bwa<em>mem</em>out.bam with <code>ls -ltrhg</code></p>
+
+<h4 id="toc_2">Benefits of BAM Format:</h4>
+
+<ul>
+<li><strong>Smaller File Size</strong>: BAM files are compressed, so they take up less disk space.</li>
+<li> <strong>Faster Processing</strong>: Binary format allows for faster read/write operations, making it more efficient to work with large datasets.</li>
+<li> <strong>Compatibility</strong>: Many downstream tools (e.g., for variant calling or visualization) require the BAM format</li>
+</ul>
+
+<p><strong>Step 4: Sort the BAM File.</strong>  Sorting is necesary for downstream applications, such as variant calling.</p>
+
+<div><pre><code class="language-none">samtools sort bwa_mem_out.bam -o bwa_mem_out_sorted.bam</code></pre></div>
+
+<p><strong>Sorting</strong> ensures that the reads are arranged in order based on their position in the reference genome, which is required by most downstream tools. Once the reads are sorted by their genomic position, algorithms can more efficiently process the data, as they can work on regions of the genome in order, rather than jumping around randomly.</p>
+
+<p><strong>Step 5:  Index the BAM file</strong>.  allows for quick access to alignment data for specific regions of the reference genome.</p>
+
+<div><pre><code class="language-none">samtools index bwa_mem_out_sorted.bam</code></pre></div>
+
+<p><strong>Indexing</strong> creates a small auxiliary file (usually ending in .bai) that allows fast access to specific regions of the BAM file. This is particularly useful for tools that need to query specific parts of the genome without loading the entire BAM file into memory.</p>
+
+<h2 id="toc_3">Lets practice!</h2>
+
+<p><strong>Task 1.</strong> Based on what we have learned, can you think of a way to produce a much more efficient approach?. You can create a pipeline combining steps 2-5. (Hint: use pipes and std redirections)</p>
+
+<p><strong>Task 2</strong>: Use the cut command to extract the chromosome, position, and coverage depth (columns 1, 2, and 4) from the output of the samtools mpileup command. </p>
+
+<p>his extracts important information such as chromosome, position, and coverage depth. Coverage depth is crucial for understanding how well a region is represented in sequencing, helping detect low coverage regions or potential sequencing errors.</p>
+
+<p><strong>Bonus task 2:</strong> Use <code>awk</code> Find the Chromosome with the highest coverage.</p>
+
+<p>Knowing the highest coverage depth can reveal regions of high redundancy, potentially indicating problematic regions or misaligned reads.</p>
+
+<p><strong>Task 3</strong>: use <code>awk</code> aritmetic operators to find the average depth from<code>coverage_depth.txt</code>. Hint <code>sum</code> <code>count++</code> <code>$3</code>.</p>
+
+<p>This helps determine the overall sequencing depth, which is critical to assessing the quality of the sequencing data and ensuring adequate coverage for variant calling or genome assembly.</p>
+
+<p><strong>Task 4</strong> Identify how many postions are below a depth threshold (i.e. 2)</p>
+
+<p><strong>Task 5</strong>: Use paste to concatenate the original mpileup output with the extracted coverage depth from the file <code>coverage_depth.txt</code>.</p>
+
+<p><strong>Task 6</strong>: Print the first line of the alignment section of the <code>bwa_mem_out.sam</code> file. Identify the different fields. (Hint: Fields are separated by <code>tab</code> delimeters.</p>
+
+<p><strong>Task 7</strong> Calculate the avergade mapping quality from the <code>bwa_mem_out.sam</code>file.Average mapping quality helps assess the overall confidence in the read alignments, which is important for downstream analysis such as variant calling. (Hint: <code>*</code> in the third column indicates that the read is unmapped. Mapping quality is on the 5th field.</p>
+
+<p><strong>Task 8</strong>: From the output of the <code>mplieip</code> command, filter for Low-Coverage Regions (&lt;2) and Extract Coordinates</p>
+
+<p>Identifying low-coverage regions helps pinpoint problematic areas in sequencing</p>
+
+<p><strong>Task 9</strong> Extract positions where the coverage depth is between 20 and 50 from <code>coverage_depth.txt</code>. (Hint: <code>&gt;=</code> <code>&amp;&amp;</code>)</p>
+
+<p>This helps focus on regions with moderate coverage, which may be ideal for further analysis or validation</p>
+
+<p><strong>Task 10</strong>: Using the <code>mpileup</code> output, count how many positions have coverage depth greater than or equal to 30.</p>
+
+<p>High-coverage regions indicate reliable data. Counting them helps quantify how much of the genome is well covered, which is essential for determining if enough sequencing depth was achieved   </p>
+
+<p><strong>Task 11</strong>: Use redirection to filter a BAM file for reads aligned to a specific chromosome and redirect error messages (if any) to <code>error_log.txt</code>. The chromosome names are <code>YY_tarseq_3121111_arrow</code></p>
+
+<p>Redirecting error messages allows you to troubleshoot issues separately while running filtering commands. For instance, missing chromosome data or file format errors can be tracked in <code>error_log.txt</code>.</p>
+
+<p><strong>Task 12</strong>: Extract the read names (column 1) and mapping qualities (column 5) from <code>bwa_mem_out_sorted.bam</code> into separate files and use <code>paste</code> to combine them.</p>
+
+<p>Combining read names and mapping quality gives a quick overview of the quality of alignments for each read, allowing you to filter or investigate reads with low mapping scores  </p>
+
+<p><strong>Task 13</strong>: Use <code>grep</code> with <code>samtools view</code> to extract reads that contain a <code>AGCTTAGG</code> sequence pattern and display them.</p>
+
+<p>This is useful for targeted searches for reads containing a specific pattern (e.g., a particular motif or barcode). It’s essential for targeted analyses or experiments where specific sequences are expected</p>
+
+<p><strong>Task 14</strong>: Extract coverage depth and read quality from the <code>bwa_mem_out_sorted.bam</code>and combine them using <code>paste</code>.</p>
+
+<p>By pasting coverage and quality metrics side by side, you can easily assess regions with high sequencing coverage but poor read quality, which may need to be revisited for quality control </p>
+
+<p><strong>Task 15</strong>: Use <code>awk</code> with boolean operators to filter out reads that have both high coverage (&gt;=30) and high mapping quality (&gt;=20).</p>
+
+<p>Filtering reads with both high coverage and high mapping quality helps you focus on the most reliable data. This reduces noise and increases the accuracy of downstream analyses like variant calling</p>
+
+<p><strong>Task 16</strong>: Use <code>cut</code>, <code>sort</code>, and <code>uniq</code> to count how many unique read names are in the bwa<em>mem</em>out_sorted.bam` file.</p>
+
+<p>Counting unique read names helps ensure there’s no duplication or overlap in reads. It’s essential for identifying PCR duplicates or verifying sequencing results. </p>
+
+<p><strong>Task 17</strong>: Using the <code>bwa_mem_out_sorted.bam</code> file, extract coverage depth, read quality, and mapping quality, and combine them using paste into a file called <code>metrics.txt</code>.</p>
+
+<p>Combining multiple metrics provides a comprehensive overview of sequencing data quality. It allows simultaneous analysis of coverage, read quality, and mapping quality in a single file  </p>
+
+<p><strong>Task 18</strong>: Extract reads with a mapping quality &gt;=20 and save them to a new file called <code>high_quality_reads.sam</code>.</p>
+
+<p>Extracting high-quality reads helps focus the analysis on data that meets a certain threshold of reliability. This step is critical before variant calling or other sensitive downstream analyses</p>
+
+<p><strong>Task 19</strong>: Count how many reads map to chromosome(s) <code>YY_tarseq_1-1052_arrow</code>.</p>
+
+<p>Counting reads that map to a specific chromosome is useful in identifying genomic coverage per chromosome. It helps ensure that all chromosomes are represented in the sequencing data.</p>
+
+<p><strong>Task 20</strong>: Sort the positions in the mpileup output by their coverage depth (column 4).</p>
+
+<p>Sorting by coverage depth allows you to focus on areas of interest, whether those with very low coverage (potential gaps) or high coverage (high-confidence regions). It&#39;s useful for ensuring even sequencing depth across the genome  </p>
+
+
+
+
+</body>
+
+</html>
