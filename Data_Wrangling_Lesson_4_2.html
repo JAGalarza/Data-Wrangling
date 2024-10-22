@@ -1,0 +1,1770 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Data_Wrangling_Lesson_4</title>
+
+
+<style type="text/css">
+body {
+  font-family: Helvetica, arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: white;
+  padding: 30px; }
+
+body > *:first-child {
+  margin-top: 0 !important; }
+body > *:last-child {
+  margin-bottom: 0 !important; }
+
+a {
+  color: #4183C4; }
+a.absent {
+  color: #cc0000; }
+a.anchor {
+  display: block;
+  padding-left: 30px;
+  margin-left: -30px;
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0; }
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 20px 0 10px;
+  padding: 0;
+  font-weight: bold;
+  -webkit-font-smoothing: antialiased;
+  cursor: text;
+  position: relative; }
+
+h1:hover a.anchor, h2:hover a.anchor, h3:hover a.anchor, h4:hover a.anchor, h5:hover a.anchor, h6:hover a.anchor {
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA09pVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoMTMuMCAyMDEyMDMwNS5tLjQxNSAyMDEyLzAzLzA1OjIxOjAwOjAwKSAgKE1hY2ludG9zaCkiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OUM2NjlDQjI4ODBGMTFFMTg1ODlEODNERDJBRjUwQTQiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OUM2NjlDQjM4ODBGMTFFMTg1ODlEODNERDJBRjUwQTQiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo5QzY2OUNCMDg4MEYxMUUxODU4OUQ4M0REMkFGNTBBNCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo5QzY2OUNCMTg4MEYxMUUxODU4OUQ4M0REMkFGNTBBNCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PsQhXeAAAABfSURBVHjaYvz//z8DJYCRUgMYQAbAMBQIAvEqkBQWXI6sHqwHiwG70TTBxGaiWwjCTGgOUgJiF1J8wMRAIUA34B4Q76HUBelAfJYSA0CuMIEaRP8wGIkGMA54bgQIMACAmkXJi0hKJQAAAABJRU5ErkJggg==) no-repeat 10px center;
+  text-decoration: none; }
+
+h1 tt, h1 code {
+  font-size: inherit; }
+
+h2 tt, h2 code {
+  font-size: inherit; }
+
+h3 tt, h3 code {
+  font-size: inherit; }
+
+h4 tt, h4 code {
+  font-size: inherit; }
+
+h5 tt, h5 code {
+  font-size: inherit; }
+
+h6 tt, h6 code {
+  font-size: inherit; }
+
+h1 {
+  font-size: 28px;
+  color: black; }
+
+h2 {
+  font-size: 24px;
+  border-bottom: 1px solid #cccccc;
+  color: black; }
+
+h3 {
+  font-size: 18px; }
+
+h4 {
+  font-size: 16px; }
+
+h5 {
+  font-size: 14px; }
+
+h6 {
+  color: #777777;
+  font-size: 14px; }
+
+p, blockquote, ul, ol, dl, li, table, pre {
+  margin: 15px 0; }
+
+hr {
+  background: transparent url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAECAYAAACtBE5DAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBNYWNpbnRvc2giIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OENDRjNBN0E2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OENDRjNBN0I2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo4Q0NGM0E3ODY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo4Q0NGM0E3OTY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PqqezsUAAAAfSURBVHjaYmRABcYwBiM2QSA4y4hNEKYDQxAEAAIMAHNGAzhkPOlYAAAAAElFTkSuQmCC) repeat-x 0 0;
+  border: 0 none;
+  color: #cccccc;
+  height: 4px;
+  padding: 0;
+}
+
+body > h2:first-child {
+  margin-top: 0;
+  padding-top: 0; }
+body > h1:first-child {
+  margin-top: 0;
+  padding-top: 0; }
+  body > h1:first-child + h2 {
+    margin-top: 0;
+    padding-top: 0; }
+body > h3:first-child, body > h4:first-child, body > h5:first-child, body > h6:first-child {
+  margin-top: 0;
+  padding-top: 0; }
+
+a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+  margin-top: 0;
+  padding-top: 0; }
+
+h1 p, h2 p, h3 p, h4 p, h5 p, h6 p {
+  margin-top: 0; }
+
+li p.first {
+  display: inline-block; }
+li {
+  margin: 0; }
+ul, ol {
+  padding-left: 30px; }
+
+ul :first-child, ol :first-child {
+  margin-top: 0; }
+
+dl {
+  padding: 0; }
+  dl dt {
+    font-size: 14px;
+    font-weight: bold;
+    font-style: italic;
+    padding: 0;
+    margin: 15px 0 5px; }
+    dl dt:first-child {
+      padding: 0; }
+    dl dt > :first-child {
+      margin-top: 0; }
+    dl dt > :last-child {
+      margin-bottom: 0; }
+  dl dd {
+    margin: 0 0 15px;
+    padding: 0 15px; }
+    dl dd > :first-child {
+      margin-top: 0; }
+    dl dd > :last-child {
+      margin-bottom: 0; }
+
+blockquote {
+  border-left: 4px solid #dddddd;
+  padding: 0 15px;
+  color: #777777; }
+  blockquote > :first-child {
+    margin-top: 0; }
+  blockquote > :last-child {
+    margin-bottom: 0; }
+
+table {
+  padding: 0;border-collapse: collapse; }
+  table tr {
+    border-top: 1px solid #cccccc;
+    background-color: white;
+    margin: 0;
+    padding: 0; }
+    table tr:nth-child(2n) {
+      background-color: #f8f8f8; }
+    table tr th {
+      font-weight: bold;
+      border: 1px solid #cccccc;
+      margin: 0;
+      padding: 6px 13px; }
+    table tr td {
+      border: 1px solid #cccccc;
+      margin: 0;
+      padding: 6px 13px; }
+    table tr th :first-child, table tr td :first-child {
+      margin-top: 0; }
+    table tr th :last-child, table tr td :last-child {
+      margin-bottom: 0; }
+
+img {
+  max-width: 100%; }
+
+span.frame {
+  display: block;
+  overflow: hidden; }
+  span.frame > span {
+    border: 1px solid #dddddd;
+    display: block;
+    float: left;
+    overflow: hidden;
+    margin: 13px 0 0;
+    padding: 7px;
+    width: auto; }
+  span.frame span img {
+    display: block;
+    float: left; }
+  span.frame span span {
+    clear: both;
+    color: #333333;
+    display: block;
+    padding: 5px 0 0; }
+span.align-center {
+  display: block;
+  overflow: hidden;
+  clear: both; }
+  span.align-center > span {
+    display: block;
+    overflow: hidden;
+    margin: 13px auto 0;
+    text-align: center; }
+  span.align-center span img {
+    margin: 0 auto;
+    text-align: center; }
+span.align-right {
+  display: block;
+  overflow: hidden;
+  clear: both; }
+  span.align-right > span {
+    display: block;
+    overflow: hidden;
+    margin: 13px 0 0;
+    text-align: right; }
+  span.align-right span img {
+    margin: 0;
+    text-align: right; }
+span.float-left {
+  display: block;
+  margin-right: 13px;
+  overflow: hidden;
+  float: left; }
+  span.float-left span {
+    margin: 13px 0 0; }
+span.float-right {
+  display: block;
+  margin-left: 13px;
+  overflow: hidden;
+  float: right; }
+  span.float-right > span {
+    display: block;
+    overflow: hidden;
+    margin: 13px auto 0;
+    text-align: right; }
+
+code, tt {
+  margin: 0 2px;
+  padding: 0 5px;
+  white-space: nowrap;
+  border: 1px solid #eaeaea;
+  background-color: #f8f8f8;
+  border-radius: 3px; }
+
+pre code {
+  margin: 0;
+  padding: 0;
+  white-space: pre;
+  border: none;
+  background: transparent; }
+
+.highlight pre {
+  background-color: #f8f8f8;
+  border: 1px solid #cccccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px; }
+
+pre {
+  background-color: #f8f8f8;
+  border: 1px solid #cccccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px; }
+  pre code, pre tt {
+    background-color: transparent;
+    border: none; }
+
+sup {
+    font-size: 0.83em;
+    vertical-align: super;
+    line-height: 0;
+}
+
+kbd {
+  display: inline-block;
+  padding: 3px 5px;
+  font-size: 11px;
+  line-height: 10px;
+  color: #555;
+  vertical-align: middle;
+  background-color: #fcfcfc;
+  border: solid 1px #ccc;
+  border-bottom-color: #bbb;
+  border-radius: 3px;
+  box-shadow: inset 0 -1px 0 #bbb
+}
+
+* {
+	-webkit-print-color-adjust: exact;
+}
+@media screen and (min-width: 914px) {
+    body {
+        width: 854px;
+        margin:0 auto;
+    }
+}
+@media print {
+	table, pre {
+		page-break-inside: avoid;
+	}
+	pre {
+		word-wrap: break-word;
+	}
+  body {
+    padding: 2cm; 
+  }
+}
+</style>
+
+
+</head>
+
+<body>
+
+<h1 id="toc_0">Understanding the fastq format and ASCII</h1>
+
+<p><img align="justify" width="600" height="300" src="https://github.com/JAGalarza/Data-Wrangling/blob/main/Images/fastq.png?raw=true alt="Linux Distros"/></p>
+
+<p>https://github.com/JAGalarza/Data-Wrangling/blob/main/Images/fastq.png?raw=true</p>
+
+<p>The FASTQ format is the industry standard for storing nucleotide sequences and their associated quality scores because it efficiently combines both sequence data and quality information in a compact, readable format. Its four-line structure (sequence identifier, sequence, separator, and quality scores) makes it easy to parse and process by bioinformatics tools. The use of ASCII encoding for quality scores allows for efficient data storage, and the format&#39;s simplicity enables compatibility with a wide range of sequencing platforms and analysis software. This widespread adoption and ease of use make it the preferred choice for high-throughput sequencing data.</p>
+
+<h3 id="toc_1">Example of a FASTQ Format</h3>
+
+<div><pre><code class="language-bash">@SEQ_ID
+GATTTGGGGTTTAAAGTTTTGGTTTAAAGTTTGGTTTAAAGTTTGGTTTAAAGTTTGGTT
++
+!!!FFFDDDDDBB&gt;@AABDDDBBDDFDDDDDCCDDDDDAAAAA</code></pre></div>
+
+<h3 id="toc_2">Breakdown of the FASTQ Format:</h3>
+
+<p>A FASTQ file consists of several entries, where each entry represents a single sequence. Each entry contains <strong>four</strong> lines:</p>
+
+<h4 id="toc_3">Line 1: Sequence Identifier</h4>
+
+<ul>
+<li><code>@SEQ_ID</code>: This is a sequence identifier or description line, starting with the <code>@</code> symbol. It often includes unique identifiers such as sequence IDs or read names.</li>
+</ul>
+
+<h4 id="toc_4">Line 2: Raw Nucleotide Sequence</h4>
+
+<ul>
+<li><strong>The raw nucleotide sequence.</strong><br>
+<code>GATTTGGGGTTTAAAGTTTTGGTTTAAAGTTTGGTTTAAAGTTTGGTTTAAAGTTTGGTT</code><br>
+The second line is the actual DNA/RNA sequence made up of bases A, T, G, C, N (for any base). The length of this line should match the number of quality scores on line 4.</li>
+</ul>
+
+<h4 id="toc_5">Line 3: Separator Line</h4>
+
+<ul>
+<li>The third line starts with a <code>+</code> symbol and can contain the same sequence identifier as the first line or be blank. It&#39;s a separator between the sequence and its quality scores.</li>
+</ul>
+
+<h4 id="toc_6">Line 4: Quality Scores</h4>
+
+<ul>
+<li><strong>The quality scores for each nucleotide in the sequence.</strong><br>
+<code>!!!FFFDDDDDBB&gt;@AABDDDBBDDFDDDDDCCDDDDDAAAAA</code><br>
+This line contains a string of ASCII characters representing the quality scores (usually encoded using Phred quality scores). Each character corresponds to a nucleotide in the sequence and represents the confidence or accuracy of the nucleotide call.</li>
+</ul>
+
+<h3 id="toc_7">ASCII Code and Its Use in FASTQ Quality Scores</h3>
+
+<p>ASCII (American Standard Code for Information Interchange) is a character encoding standard that represents text in computers and electronic devices. Each character (letter, digit, symbol) is assigned a unique numeric value, known as its ASCII code. In the context of FASTQ files, ASCII encoding is used to represent the quality scores of nucleotides in a sequencing read.</p>
+
+<p>In a FASTQ file, the quality scores for each nucleotide in a sequence are encoded using ASCII characters. These scores reflect the confidence or accuracy of each base call, typically represented as Phred scores.</p>
+
+<ul>
+<li><strong>Important</strong>: The Phred score indicates the probability of an incorrect base call. Higher Phred scores indicate greater confidence in the accuracy of the base. For example, a Phred score of 20 corresponds to a 1 in 100 chance of the base being incorrect (99% accuracy).</li>
+</ul>
+
+<p>To store these Phred scores efficiently, they are converted into ASCII characters. Specifically, Phred scores are encoded as ASCII characters by adding 33 to the numeric Phred score. This is because the range of typical Phred scores (0-93) can be mapped to readable ASCII characters (from ASCII 33 &#39;!&#39; to ASCII 126 &#39;~&#39;).</p>
+
+<h2 id="toc_8">Conversion Process</h2>
+
+<h3 id="toc_9">Phred Score Calculation</h3>
+
+<ul>
+<li>A higher Phred score (e.g., 30) means the base call is more accurate.</li>
+<li><p>The Phred score is computed using the formula:</p>
+
+<p>[
+\text{Phred score} = -10 \cdot \log_{10}(\text{probability of incorrect base call})
+]</p></li>
+</ul>
+
+<h3 id="toc_10">ASCII Conversion</h3>
+
+<ul>
+<li><p>To convert a Phred score to an ASCII character, the formula is:</p>
+
+<p>[
+\text{ASCII character} = \text{Phred score} + 33
+]</p></li>
+<li><p>For example, a Phred score of 30 becomes an ASCII character:</p>
+
+<p>[
+30 + 33 = 63
+]</p></li>
+<li><p>The ASCII character for 63 is <code>?</code>.</p></li>
+</ul>
+
+<h3 id="toc_11">Note on ASCII Characters</h3>
+
+<ul>
+<li>Only printable ASCII characters are used to represent Phred scores in FASTQ files. Non-printable characters (ASCII values 0-31) are excluded to ensure compatibility with text processing tools and to maintain readability.</li>
+</ul>
+
+<table>
+<thead>
+<tr>
+<th>ASCII Character</th>
+<th>ASCII Value</th>
+<th>Phred Score</th>
+<th>Probability of Incorrect Base Call</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>!</td>
+<td>33</td>
+<td>0</td>
+<td>1.00</td>
+</tr>
+<tr>
+<td>&quot;</td>
+<td>34</td>
+<td>1</td>
+<td>0.79</td>
+</tr>
+<tr>
+<td>#</td>
+<td>35</td>
+<td>2</td>
+<td>0.63</td>
+</tr>
+<tr>
+<td>$</td>
+<td>36</td>
+<td>3</td>
+<td>0.50</td>
+</tr>
+<tr>
+<td>%</td>
+<td>37</td>
+<td>4</td>
+<td>0.40</td>
+</tr>
+<tr>
+<td>&amp;</td>
+<td>38</td>
+<td>5</td>
+<td>0.32</td>
+</tr>
+<tr>
+<td>&#39;</td>
+<td>39</td>
+<td>6</td>
+<td>0.25</td>
+</tr>
+<tr>
+<td>(</td>
+<td>40</td>
+<td>7</td>
+<td>0.20</td>
+</tr>
+<tr>
+<td>)</td>
+<td>41</td>
+<td>8</td>
+<td>0.16</td>
+</tr>
+<tr>
+<td>*</td>
+<td>42</td>
+<td>9</td>
+<td>0.13</td>
+</tr>
+<tr>
+<td>+</td>
+<td>43</td>
+<td>10</td>
+<td>0.10</td>
+</tr>
+<tr>
+<td>,</td>
+<td>44</td>
+<td>11</td>
+<td>0.08</td>
+</tr>
+<tr>
+<td>-</td>
+<td>45</td>
+<td>12</td>
+<td>0.06</td>
+</tr>
+<tr>
+<td>.</td>
+<td>46</td>
+<td>13</td>
+<td>0.05</td>
+</tr>
+<tr>
+<td>/</td>
+<td>47</td>
+<td>14</td>
+<td>0.04</td>
+</tr>
+<tr>
+<td>0</td>
+<td>48</td>
+<td>15</td>
+<td>0.03</td>
+</tr>
+<tr>
+<td>1</td>
+<td>49</td>
+<td>16</td>
+<td>0.02</td>
+</tr>
+<tr>
+<td>2</td>
+<td>50</td>
+<td>17</td>
+<td>0.02</td>
+</tr>
+<tr>
+<td>3</td>
+<td>51</td>
+<td>18</td>
+<td>0.01</td>
+</tr>
+<tr>
+<td>4</td>
+<td>52</td>
+<td>19</td>
+<td>0.01</td>
+</tr>
+<tr>
+<td>5</td>
+<td>53</td>
+<td>20</td>
+<td>0.01</td>
+</tr>
+<tr>
+<td>6</td>
+<td>54</td>
+<td>21</td>
+<td>0.01</td>
+</tr>
+<tr>
+<td>7</td>
+<td>55</td>
+<td>22</td>
+<td>0.00</td>
+</tr>
+<tr>
+<td>8</td>
+<td>56</td>
+<td>23</td>
+<td>0.00</td>
+</tr>
+<tr>
+<td>9</td>
+<td>57</td>
+<td>24</td>
+<td>0.00</td>
+</tr>
+<tr>
+<td>:</td>
+<td>58</td>
+<td>25</td>
+<td>0.00</td>
+</tr>
+<tr>
+<td>;</td>
+<td>59</td>
+<td>26</td>
+<td>0.00</td>
+</tr>
+<tr>
+<td>&lt;</td>
+<td>60</td>
+<td>27</td>
+<td>0.00</td>
+</tr>
+<tr>
+<td>=</td>
+<td>61</td>
+<td>28</td>
+<td>0.00</td>
+</tr>
+<tr>
+<td>&gt;</td>
+<td>62</td>
+<td>29</td>
+<td>0.00</td>
+</tr>
+<tr>
+<td>?</td>
+<td>63</td>
+<td>30</td>
+<td>0.00</td>
+</tr>
+<tr>
+<td>@</td>
+<td>64</td>
+<td>31</td>
+<td>0.00</td>
+</tr>
+<tr>
+<td>A</td>
+<td>65</td>
+<td>32</td>
+<td>0.00</td>
+</tr>
+<tr>
+<td>B</td>
+<td>66</td>
+<td>33</td>
+<td>0.00</td>
+</tr>
+<tr>
+<td>C</td>
+<td>67</td>
+<td>34</td>
+<td>0.00</td>
+</tr>
+<tr>
+<td>D</td>
+<td>68</td>
+<td>35</td>
+<td>0.00</td>
+</tr>
+<tr>
+<td>E</td>
+<td>69</td>
+<td>36</td>
+<td>0.00</td>
+</tr>
+<tr>
+<td>F</td>
+<td>70</td>
+<td>37</td>
+<td>0.00</td>
+</tr>
+<tr>
+<td>G</td>
+<td>71</td>
+<td>38</td>
+<td>0.00</td>
+</tr>
+<tr>
+<td>H</td>
+<td>72</td>
+<td>39</td>
+<td>0.00</td>
+</tr>
+<tr>
+<td>I</td>
+<td>73</td>
+<td>40</td>
+<td>0.00</td>
+</tr>
+<tr>
+<td>J</td>
+<td>74</td>
+<td>41</td>
+<td>0.00</td>
+</tr>
+<tr>
+<td>K</td>
+<td>75</td>
+<td>42</td>
+<td>0.00</td>
+</tr>
+<tr>
+<td>L</td>
+<td>76</td>
+<td>43</td>
+<td>0.00</td>
+</tr>
+<tr>
+<td>M</td>
+<td>77</td>
+<td>44</td>
+<td>0.00</td>
+</tr>
+<tr>
+<td>N</td>
+<td>78</td>
+<td>45</td>
+<td>0.00</td>
+</tr>
+<tr>
+<td>O</td>
+<td>79</td>
+<td>46</td>
+<td>0.00</td>
+</tr>
+<tr>
+<td>P</td>
+<td>80</td>
+<td>47</td>
+<td>0.00</td>
+</tr>
+<tr>
+<td>Q</td>
+<td>81</td>
+<td>48</td>
+<td>0.00</td>
+</tr>
+<tr>
+<td>R</td>
+<td>82</td>
+<td>49</td>
+<td>0.00</td>
+</tr>
+<tr>
+<td>S</td>
+<td>83</td>
+<td>50</td>
+<td>0.00</td>
+</tr>
+<tr>
+<td>T</td>
+<td>84</td>
+<td>51</td>
+<td>0.00</td>
+</tr>
+<tr>
+<td>U</td>
+<td>85</td>
+<td>52</td>
+<td>0.00</td>
+</tr>
+<tr>
+<td>V</td>
+<td>86</td>
+<td>53</td>
+<td>0.00</td>
+</tr>
+<tr>
+<td>W</td>
+<td>87</td>
+<td>54</td>
+<td>0.00</td>
+</tr>
+<tr>
+<td>X</td>
+<td>88</td>
+<td>55</td>
+<td>0.00</td>
+</tr>
+<tr>
+<td>Y</td>
+<td>89</td>
+<td>56</td>
+<td>0.00</td>
+</tr>
+<tr>
+<td>Z</td>
+<td>90</td>
+<td>57</td>
+<td>0.00</td>
+</tr>
+<tr>
+<td>[</td>
+<td>91</td>
+<td>58</td>
+<td>0.00</td>
+</tr>
+<tr>
+<td>\</td>
+<td>92</td>
+<td>59</td>
+<td>0.00</td>
+</tr>
+<tr>
+<td>]</td>
+<td>93</td>
+<td>60</td>
+<td>0.00</td>
+</tr>
+<tr>
+<td>^</td>
+<td>94</td>
+<td>61</td>
+<td>0.00</td>
+</tr>
+<tr>
+<td>_</td>
+<td>95</td>
+<td>62</td>
+<td>0.00</td>
+</tr>
+<tr>
+<td>`</td>
+<td>96</td>
+<td>63</td>
+<td>0.00</td>
+</tr>
+<tr>
+<td>a</td>
+<td>97</td>
+<td>64</td>
+<td>0.00</td>
+</tr>
+<tr>
+<td>b</td>
+<td>98</td>
+<td>65</td>
+<td>0.00</td>
+</tr>
+<tr>
+<td>c</td>
+<td>99</td>
+<td>66</td>
+<td>0.00</td>
+</tr>
+<tr>
+<td>d</td>
+<td>100</td>
+<td>67</td>
+<td>0.00</td>
+</tr>
+<tr>
+<td>e</td>
+<td>101</td>
+<td>68</td>
+<td>0.00</td>
+</tr>
+<tr>
+<td>f</td>
+<td>102</td>
+<td>69</td>
+<td>0.00</td>
+</tr>
+<tr>
+<td>g</td>
+<td>103</td>
+<td>70</td>
+<td>0.00</td>
+</tr>
+<tr>
+<td>h</td>
+<td>104</td>
+<td>71</td>
+<td>0.00</td>
+</tr>
+<tr>
+<td>i</td>
+<td>105</td>
+<td>72</td>
+<td>0.00</td>
+</tr>
+<tr>
+<td>j</td>
+<td>106</td>
+<td>73</td>
+<td>0.00</td>
+</tr>
+<tr>
+<td>k</td>
+<td>107</td>
+<td>74</td>
+<td>0.00</td>
+</tr>
+<tr>
+<td>l</td>
+<td>108</td>
+<td>75</td>
+<td>0.00</td>
+</tr>
+<tr>
+<td>m</td>
+<td>109</td>
+<td>76</td>
+<td>0.00</td>
+</tr>
+<tr>
+<td>n</td>
+<td>110</td>
+<td>77</td>
+<td>0.00</td>
+</tr>
+<tr>
+<td>o</td>
+<td>111</td>
+<td>78</td>
+<td>0.00</td>
+</tr>
+<tr>
+<td>p</td>
+<td>112</td>
+<td>79</td>
+<td>0.00</td>
+</tr>
+<tr>
+<td>q</td>
+<td>113</td>
+<td>80</td>
+<td>0.00</td>
+</tr>
+<tr>
+<td>r</td>
+<td>114</td>
+<td>81</td>
+<td>0.00</td>
+</tr>
+<tr>
+<td>s</td>
+<td>115</td>
+<td>82</td>
+<td>0.00</td>
+</tr>
+<tr>
+<td>t</td>
+<td>116</td>
+<td>83</td>
+<td>0.00</td>
+</tr>
+<tr>
+<td>u</td>
+<td>117</td>
+<td>84</td>
+<td>0.00</td>
+</tr>
+<tr>
+<td>v</td>
+<td>118</td>
+<td>85</td>
+<td>0.00</td>
+</tr>
+<tr>
+<td>w</td>
+<td>119</td>
+<td>86</td>
+<td>0.00</td>
+</tr>
+<tr>
+<td>x</td>
+<td>120</td>
+<td>87</td>
+<td>0.00</td>
+</tr>
+<tr>
+<td>y</td>
+<td>121</td>
+<td>88</td>
+<td>0.00</td>
+</tr>
+<tr>
+<td>z</td>
+<td>122</td>
+<td>89</td>
+<td>0.00</td>
+</tr>
+<tr>
+<td>{</td>
+<td>123</td>
+<td>90</td>
+<td>0.00</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>124</td>
+<td>91</td>
+</tr>
+<tr>
+<td>}</td>
+<td>125</td>
+<td>92</td>
+<td>0.00</td>
+</tr>
+<tr>
+<td>~</td>
+<td>126</td>
+<td>93</td>
+<td>0.00</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="toc_12">Table Caption</h2>
+
+<table>
+<thead>
+<tr>
+<th>Column</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><strong>ASCII Character</strong></td>
+<td>The character represented in ASCII.</td>
+</tr>
+<tr>
+<td><strong>ASCII Value</strong></td>
+<td>The numeric value assigned to the character in the ASCII standard.</td>
+</tr>
+<tr>
+<td><strong>Phred Score</strong></td>
+<td>The corresponding Phred quality score that the ASCII character represents.</td>
+</tr>
+<tr>
+<td><strong>Probability of Incorrect Base Call</strong></td>
+<td>The probability that the base call is incorrect, based on the Phred score. Higher Phred scores correspond to lower probabilities of incorrect calls.</td>
+</tr>
+</tbody>
+</table>
+
+<p>Lets Look at Another Example of FASTQ Quality Encoding</p>
+
+<div><pre><code class="language-bash">@SEQ_ID
+GATTTGGGGTTTAAAGTTTTGG
++
+!!!FFFDDDDDBBAA&gt;@AABBB</code></pre></div>
+
+<p><strong>Line 1 (@SEQ_ID)</strong>: Sequence identifier.
+<strong>Line 2 (GATTTGGGGTTTAAAGTTTTGG)</strong>: The DNA sequence.
+<strong>Line 3 (+)</strong>: Separator line.
+<strong>Line 4 (!!!FFFDDDDDBBAA&gt;@AABBB)</strong>: ASCII-encoded quality scores.</p>
+
+<h3 id="toc_13">Example of Decoding Quality Scores</h3>
+
+<p>Let’s decode the first few quality scores from the string <code>!!!FFF...</code>:</p>
+
+<ul>
+<li><p><code>!</code> in ASCII corresponds to 33 in the table above.<br>
+<strong>Phred score</strong>: ( 33 - 33 = 0 ) (lowest quality, high chance of error)</p></li>
+<li><p><code>F</code> in ASCII corresponds to 70 in the table above.<br>
+<strong>Phred score</strong>: ( 70 - 33 = 37 ) (high quality, very low chance of error)</p></li>
+</ul>
+
+<h2 id="toc_14">Why Use ASCII Encoding?</h2>
+
+<ul>
+<li><strong>Compact Representation</strong>: Encoding quality scores as single ASCII characters allows for compact storage.</li>
+<li><strong>Human-Readable</strong>: ASCII characters are more easily readable and interpretable than raw numbers.</li>
+<li><strong>Efficient Parsing</strong>: Bioinformatics tools can easily convert ASCII characters back to Phred scores for analysis.</li>
+</ul>
+
+<h2 id="toc_15">AWK</h2>
+
+<p><img align="justify" width="600" height="300" src="https://github.com/JAGalarza/Data-Wrangling/blob/main/Images/awk_logo.png?raw=true alt="Linux Distros"/></p>
+
+<p><strong>AWK</strong> is a powerful programming language and command-line utility used for text processing and data extraction in Unix-like operating systems. It is named after its creators: Alfred Aho, Peter Weinberger, and Brian Kernighan. It processes data, typically structured in rows and columns, and performs actions like filtering, transforming, and reporting based on patterns in the text</p>
+
+<p><strong>Key Features of AWK:</strong></p>
+
+<ul>
+<li>Pattern Matching: AWK can search for patterns in text and perform actions on the matched lines.</li>
+<li>Field Processing: It can split input lines into fields based on a delimiter (default is whitespace).</li>
+<li>Built-in Variables: AWK has several built-in variables like NR (number of records), NF (number of fields), FS (field separator), and OFS (output field separator).</li>
+<li>Arithmetic and String Operations: It supports arithmetic operations and string manipulation.
+Control Structures: AWK includes control structures like loops and conditionals.</li>
+</ul>
+
+<p><strong>Basic Syntax:</strong></p>
+
+<div><pre><code class="language-bash">awk &#39;pattern { action }&#39; input-file</code></pre></div>
+
+<h3 id="toc_16">Let&#39;s use the fastq sequence above to demostrate the usage of awk</h3>
+
+<p><strong>Extracting Sequence Identifiers</strong>:</p>
+
+<p>To extract the sequence identifiers (the lines that start with @), you can use the following AWK command:</p>
+
+<div><pre><code class="language-bash">awk &#39;NR % 4 == 1 { print $0 }&#39; sample.fastq</code></pre></div>
+
+<p><code>NR % 4 == 1</code>: This checks if the line number (<code>NR</code>) modulo 4 equals 1, meaning we are targeting the first line of each FASTQ entry (the sequence identifier).
+<code>{ print $0 }</code>: This prints the entire line where the condition is true.</p>
+
+<p><strong>Output</strong></p>
+
+<pre style="background-color: #000000; color: #FFFFFF; padding: 3px; border-radius: 3px;">
+@SEQ_ID
+</pre>
+
+<p><strong>Extracting the DNA Sequences:</strong>
+To extract the raw DNA sequences (the second line of each entry), use:</p>
+
+<div><pre><code class="language-bash">awk &#39;NR % 4 == 2 { print $0 }&#39; sample.fastq</code></pre></div>
+
+<p><code>NR % 4 == 2</code>: This checks for the second line of each FASTQ entry.
+<code>{ print $0 }</code>: Prints the entire line containing the DNA sequence.</p>
+
+<p><strong>Output</strong></p>
+
+<pre style="background-color: #000000; color: #FFFFFF; padding: 2px; border-radius: 2px;">
+GATTTGGGGTTTAAAGTTTTGG
+</pre>
+
+<p><strong>Counting the Number of Sequences</strong>:
+To count the total number of sequences in the FASTQ file, you can count the number of identifiers:</p>
+
+<div><pre><code class="language-bash">awk &#39;NR % 4 == 1 { count++ } END { print count }&#39; sample.fastq</code></pre></div>
+
+<p><code>NR % 4 == 1 { count++ }</code>: For every line that is an identifier, increment the count variable.
+<code>END { print count }</code>: After processing all lines, print the total count.</p>
+
+<p><strong>Output</strong></p>
+
+<pre style="background-color: #000000; color: #FFFFFF; padding: 3px; border-radius: 3px;">
+1
+</pre>
+
+<p><strong>Extracting Quality Scores</strong>:
+To extract the quality scores (the fourth line of each entry), use:</p>
+
+<div><pre><code class="language-bash">awk &#39;NR % 4 == 0 { print $0 }&#39; sample.fastq</code></pre></div>
+
+<p><code>NR % 4 == 0</code>: This checks for the fourth line of each FASTQ entry (which contains the quality scores).
+<code>{ print $0 }</code>: Prints the entire line of quality scores.</p>
+
+<p><strong>Output</strong></p>
+
+<pre style="background-color: #000000; color: #FFFFFF; padding: 3px; border-radius: 3px;">
+!!!FFFDDDDDBBAA>@AABBB
+</pre>
+
+<h3 id="toc_17">Lets do a more complex string manipulation by replacing the quality scores with randon printable characters of the ASCII code</h3>
+
+<div><pre><code class="language-bash">awk &#39;BEGIN { srand() } 
+     NR % 4 == 0 { 
+                 for (i = 1; i &lt;= length($0); i++) {
+             printf(&quot;%c&quot;, int(rand() * 93) + 33)  
+         }
+         print &quot;&quot; 
+         next 
+     } 
+     { print }&#39; sample.fastq</code></pre></div>
+
+<h3 id="toc_18">Command Breakdown</h3>
+
+<ul>
+<li><p><strong>BEGIN { srand() }:</strong> This initializes the random number generator. It ensures that you get different random values each time you run the command.</p></li>
+<li><p><strong>NR % 4 == 0:</strong> This condition checks if the current line number is a multiple of 4, which identifies the quality score line in the FASTQ format.</p></li>
+<li><p><strong>for (i = 1; i &lt;= length($0); i++):</strong> This loop iterates over each character in the quality score line.</p></li>
+<li><p><strong>printf(&quot;%c&quot;, int(rand() * 93) + 33):</strong></p>
+
+<ul>
+<li><strong>rand() * 93:</strong> Generates a random number between 0 and 92.</li>
+<li><strong>int(...) + 33:</strong> Converts it into an ASCII printable character by adding 33 (the lowest ASCII printable character).</li>
+<li><strong>printf(&quot;%c&quot;, ...):</strong> Outputs the generated character without automatically adding a new line.</li>
+</ul></li>
+<li><p><strong>print &quot;&quot;:</strong> After generating the entire new quality score line, this prints a new line.</p></li>
+<li><p><strong>{ print }:</strong> This prints all other lines (sequence identifier, sequence, and separator line) unchanged.</p></li>
+</ul>
+
+<p>The origial quality score was:</p>
+
+<pre style="background-color: #000000; color: #FFFFFF; padding: 3px; border-radius: 3px;">
+!!!FFFDDDDDBBAA>@AABBB
+</pre>
+
+<p>The modified FASTQ output might look like this (the quality scores will differ every time you run the command):</p>
+
+<pre style="background-color: #000000; color: #FFFFFF; padding: 3px; border-radius: 3px;">
+@SEQ_ID
+GATTTGGGGTTTAAAGTTTTGG
++
+:;<=?@A?F'J;L1E#1
+</pre>
+
+<h3 id="toc_19">Demostration of <code>awk</code> main concepts using the <code>sample.txt</code> file from the previous lesson</h3>
+
+<ul>
+<li>Note: you need to add <code>&#39; &#39;</code>to the Example comand (<code>awk &#39;$1 == &quot;Linux&quot; &amp;&amp; $2 == &quot;v2.4&quot;&#39; sample.txt</code>)</li>
+</ul>
+
+<h3 id="toc_20">Pattern Matching</h3>
+
+<table>
+<thead>
+<tr>
+<th>Pattern</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>/regex/</code></td>
+<td>Matches lines containing the regular expression.</td>
+<td><code>/Linux/</code> matches lines containing &quot;Linux&quot;.</td>
+</tr>
+<tr>
+<td><code>BEGIN</code></td>
+<td>Executes before any input lines are read.</td>
+<td><code>BEGIN { print &quot;Start of file&quot; }</code></td>
+</tr>
+<tr>
+<td><code>END</code></td>
+<td>Executes after all input lines are processed.</td>
+<td><code>END { print &quot;End of file&quot; }</code></td>
+</tr>
+<tr>
+<td><code>expr1 &amp;&amp; expr2</code></td>
+<td>Matches lines where both expressions are true (AND).</td>
+<td><code>$1 == &quot;Linux&quot; &amp;&amp; $2 == &quot;v2.4&quot;</code></td>
+</tr>
+<tr>
+<td><code>expr1 || expr2</code></td>
+<td>Matches lines where either expression is true (OR).</td>
+<td><code>$1 == &quot;Linux&quot; || $1 == &quot;Nano&quot;</code></td>
+</tr>
+<tr>
+<td><code>!expr</code></td>
+<td>Matches lines where the expression is false (NOT).</td>
+<td><code>!($1 ~ /Linux/)</code> (matches lines without &quot;Linux&quot;).</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="toc_21">Field Processing</h3>
+
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>$0</code></td>
+<td>Represents the entire input record (the whole line).</td>
+<td><code>print $0</code> prints the whole line.</td>
+</tr>
+<tr>
+<td><code>$1, $2, ...</code></td>
+<td>Represents the first, second, etc., fields in the line.</td>
+<td><code>print $1</code> prints the first field.</td>
+</tr>
+<tr>
+<td><code>FS</code></td>
+<td>Field Separator (default: space or tab).</td>
+<td><code>FS=&quot;,&quot;</code> to use a comma as a field separator.</td>
+</tr>
+<tr>
+<td><code>OFS</code></td>
+<td>Output Field Separator (default: space).</td>
+<td><code>OFS=&quot;\t&quot;</code> to use a tab for output fields.</td>
+</tr>
+<tr>
+<td><code>RS</code></td>
+<td>Record Separator (default: newline).</td>
+<td><code>RS=&quot;\n\n&quot;</code> to use a blank line as a record separator.</td>
+</tr>
+<tr>
+<td><code>ORS</code></td>
+<td>Output Record Separator (default: newline).</td>
+<td><code>ORS=&quot;\n&quot;</code> for standard newline output.</td>
+</tr>
+<tr>
+<td><code>NF</code></td>
+<td>Number of fields in the current record.</td>
+<td><code>print NF</code> prints the number of fields.</td>
+</tr>
+<tr>
+<td><code>NR</code></td>
+<td>Number of records processed so far.</td>
+<td><code>print NR</code> prints the record count.</td>
+</tr>
+<tr>
+<td><code>FNR</code></td>
+<td>Number of records processed in the current file.</td>
+<td><code>print FNR</code> prints the file-specific record count.</td>
+</tr>
+<tr>
+<td><code>FILENAME</code></td>
+<td>The name of the current file being processed.</td>
+<td><code>print FILENAME</code> prints the current file name.</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="toc_22">Built-in Variables</h3>
+
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>FS</code></td>
+<td>Input field separator (default: space).</td>
+<td><code>FS=&quot; &quot;</code> sets space as the field separator.</td>
+</tr>
+<tr>
+<td><code>OFS</code></td>
+<td>Output field separator (default: space).</td>
+<td><code>OFS=&quot;\t&quot;</code> sets tab as output separator.</td>
+</tr>
+<tr>
+<td><code>RS</code></td>
+<td>Input record separator (default: newline).</td>
+<td><code>RS=&quot;\n\n&quot;</code> sets a blank line as record separator.</td>
+</tr>
+<tr>
+<td><code>ORS</code></td>
+<td>Output record separator (default: newline).</td>
+<td><code>ORS=&quot;\n&quot;</code> sets newline as output separator.</td>
+</tr>
+<tr>
+<td><code>NF</code></td>
+<td>Number of fields in the current record.</td>
+<td><code>print NF</code> prints the number of fields.</td>
+</tr>
+<tr>
+<td><code>NR</code></td>
+<td>Total number of records processed.</td>
+<td><code>print NR</code> prints the total record count.</td>
+</tr>
+<tr>
+<td><code>FNR</code></td>
+<td>Number of records processed in the current file.</td>
+<td><code>print FNR</code> prints record count for current file.</td>
+</tr>
+<tr>
+<td><code>FILENAME</code></td>
+<td>Name of the current input file.</td>
+<td><code>print FILENAME</code> prints the current file name.</td>
+</tr>
+<tr>
+<td><code>SUBSEP</code></td>
+<td>Subscript separator (default: <code>\034</code>).</td>
+<td><code>SUBSEP=&quot;\t&quot;</code> sets tab as the subscript separator.</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="toc_23">String Operators</h3>
+
+<table>
+<thead>
+<tr>
+<th>Operator</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>str1 &quot; &quot; str2</code></td>
+<td>Concatenates two strings.</td>
+<td><code>&quot;Linux&quot; &quot; &quot; &quot;Rocks&quot;</code> results in <code>&quot;Linux Rocks&quot;</code>.</td>
+</tr>
+<tr>
+<td><code>length(str)</code></td>
+<td>Returns the length of the string.</td>
+<td><code>length(&quot;Linux&quot;)</code> returns <code>5</code>.</td>
+</tr>
+<tr>
+<td><code>index(str, sub)</code></td>
+<td>Returns the position of the substring <code>sub</code> in <code>str</code>.</td>
+<td><code>index(&quot;Linux&quot;, &quot;n&quot;)</code> returns <code>3</code>.</td>
+</tr>
+<tr>
+<td><code>match(str, regex)</code></td>
+<td>Matches the string <code>str</code> against the regular expression <code>regex</code>.</td>
+<td><code>match(&quot;Linux&quot;, /x/)</code> returns <code>5</code>.</td>
+</tr>
+<tr>
+<td><code>substr(str, m, n)</code></td>
+<td>Returns a substring of <code>str</code> starting from position <code>m</code> for <code>n</code> characters.</td>
+<td><code>substr(&quot;Linux&quot;, 2, 3)</code> returns <code>&quot;inu&quot;</code>.</td>
+</tr>
+<tr>
+<td><code>split(str, arr, sep)</code></td>
+<td>Splits <code>str</code> into an array <code>arr</code> using separator <code>sep</code>.</td>
+<td><code>split(&quot;Linux,Nano&quot;, arr, &quot;,&quot;)</code> splits the string into an array with <code>arr[1]=&quot;Linux&quot;</code> and <code>arr[2]=&quot;Nano&quot;</code>.</td>
+</tr>
+<tr>
+<td><code>tolower(str)</code></td>
+<td>Converts a string to lowercase.</td>
+<td><code>tolower(&quot;Linux&quot;)</code> returns <code>&quot;linux&quot;</code>.</td>
+</tr>
+<tr>
+<td><code>toupper(str)</code></td>
+<td>Converts a string to uppercase.</td>
+<td><code>toupper(&quot;linux&quot;)</code> returns <code>&quot;LINUX&quot;</code>.</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="toc_24">Control Structures</h3>
+
+<table>
+<thead>
+<tr>
+<th>Structure</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>if (condition) { action }</code></td>
+<td>Executes <code>action</code> if the condition is true.</td>
+<td><code>if ($1 == &quot;Linux&quot;) { print &quot;Found&quot; }</code></td>
+</tr>
+<tr>
+<td><code>if (condition) { action } else { action }</code></td>
+<td>If-else structure.</td>
+<td><code>if ($1 == &quot;Linux&quot;) { print &quot;Linux&quot; } else { print &quot;Not Linux&quot; }</code></td>
+</tr>
+<tr>
+<td><code>while (condition) { action }</code></td>
+<td>Executes <code>action</code> while the condition is true.</td>
+<td><code>while (x &lt; 5) { print x; x++ }</code></td>
+</tr>
+<tr>
+<td><code>for (i = 1; i &lt;= n; i++) { action }</code></td>
+<td>Standard <code>for</code> loop.</td>
+<td><code>for (i = 1; i &lt;= 5; i++) { print i }</code></td>
+</tr>
+<tr>
+<td><code>for (i in arr) { action }</code></td>
+<td>Iterates over elements in an array.</td>
+<td><code>for (i in arr) { print arr[i] }</code></td>
+</tr>
+<tr>
+<td><code>break</code></td>
+<td>Exits the innermost loop.</td>
+<td><code>if ($1 == &quot;STOP&quot;) { break }</code></td>
+</tr>
+<tr>
+<td><code>continue</code></td>
+<td>Skips the rest of the loop body and starts the next iteration.</td>
+<td><code>if ($1 == &quot;SKIP&quot;) { continue }</code></td>
+</tr>
+<tr>
+<td><code>next</code></td>
+<td>Skips the remaining processing for the current record and starts the next.</td>
+<td><code>if ($1 == &quot;SKIP&quot;) { next }</code></td>
+</tr>
+<tr>
+<td><code>exit</code></td>
+<td>Exits the <code>awk</code> program.</td>
+<td><code>if ($1 == &quot;STOP&quot;) { exit }</code></td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="toc_25">Boolean Operators</h3>
+
+<table>
+<thead>
+<tr>
+<th>Operator</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>&amp;&amp;</code></td>
+<td>Logical AND (true if both operands are true).</td>
+<td><code>$1 == &quot;Linux&quot; &amp;&amp; $2 == &quot;v2.4&quot;</code></td>
+</tr>
+<tr>
+<td><code>||</code></td>
+<td>Logical OR (true if either operand is true).</td>
+<td><code>$1 == &quot;Linux&quot; || $1 == &quot;Nano&quot;</code></td>
+</tr>
+<tr>
+<td><code>!</code></td>
+<td>Logical NOT (true if the operand is false).</td>
+<td><code>!($1 ~ /Linux/)</code> matches lines without &quot;Linux&quot;.</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="toc_26">Escape Sequences</h3>
+
+<table>
+<thead>
+<tr>
+<th>Escape Sequence</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>\n</code></td>
+<td>Newline.</td>
+<td><code>print &quot;Hello\nWorld&quot;</code> prints two lines.</td>
+</tr>
+<tr>
+<td><code>\t</code></td>
+<td>Horizontal tab.</td>
+<td><code>print &quot;Hello\tWorld&quot;</code> prints with a tab space.</td>
+</tr>
+<tr>
+<td><code>\\</code></td>
+<td>Literal backslash.</td>
+<td><code>print &quot;\\&quot;</code> prints a backslash.</td>
+</tr>
+<tr>
+<td><code>\&quot;</code></td>
+<td>Literal double quote.</td>
+<td><code>print &quot;Hello \&quot;World\&quot;&quot;</code> prints <code>Hello &quot;World&quot;</code>.</td>
+</tr>
+<tr>
+<td><code>\b</code></td>
+<td>Backspace.</td>
+<td><code>print &quot;Hello\bWorld&quot;</code> removes the <code>o</code>.</td>
+</tr>
+<tr>
+<td><code>\r</code></td>
+<td>Carriage return.</td>
+<td><code>print &quot;Hello\rWorld&quot;</code> prints <code>World</code>.</td>
+</tr>
+</tbody>
+</table>
+
+<h1 id="toc_27">SED Stream Editor</h1>
+
+<p><code>sed</code>is another powerful Linux command-line utility used for processing and transforming text in a file or input stream. It works by performing basic text transformations, such as substitution, insertion, deletion, and more, line-by-line. It is widely used in bioinformatics for search-and-replace tasks.</p>
+
+<p><img align="justify" width="150" height="150" src="https://github.com/JAGalarza/Data-Wrangling/blob/main/Images/Sed.png?raw=true alt="Linux Distros"/></p>
+
+<p>Basic Syntax of sed
+<code>bash
+sed [options] &#39;command&#39; file
+</code></p>
+
+<ul>
+<li><p><strong>Options:</strong> Flags or options to modify the behavior (e.g., <code>-i</code> for in-place editing, <code>-n</code> for suppressing automatic printing).</p></li>
+<li><p><strong>Command:</strong> The transformation operation to be applied (e.g., substitution with <code>s/</code>).</p></li>
+<li><p><strong>File:</strong> The input file or stream to process. If no file is provided, sed reads from standard input.</p></li>
+</ul>
+
+<h3 id="toc_28">Lets use sed to perform the equivalent of the awk operations in the fastq sequence.</h3>
+
+<p><strong>Extract the Sequence ID</strong>
+We have learn that the Sequence ID is located on every first line (line number 1, 5, 9, etc.), which starts with @.</p>
+
+<div><pre><code class="language-bash">sed -n &#39;1~4p&#39; sample.fastq</code></pre></div>
+
+<p><code>-n</code>: Suppresses automatic printing of lines.</p>
+
+<p><code>1~4p</code>: This pattern means &quot;starting at line 1, print every 4th line.&quot; </p>
+
+<p><strong>Output:</strong>
+<pre style="background-color: #000000; color: #FFFFFF; padding: 3px; border-radius: 3px;">
+@SEQ_ID
+</pre></p>
+
+<p><strong>Extract the DNA Sequence</strong>;
+The DNA sequence is located on every second line (line number 2, 6, 10, etc.).</p>
+
+<div><pre><code class="language-bash">sed -n &#39;2~4p&#39; sample.fastq</code></pre></div>
+
+<p><code>2~4p</code>: This means &quot;starting at line 2, print every 4th line.&quot; </p>
+
+<p><strong>Output</strong></p>
+
+<pre style="background-color: #000000; color: #FFFFFF; padding: 2px; border-radius: 2px;">
+GATTTGGGGTTTAAAGTTTTGG
+</pre>
+
+<p><strong>Count the Number of Sequences:</strong>
+To count the number of sequences, count how many times the sequence ID lines (starting with @) occur.</p>
+
+<div><pre><code class="language-bash">sed -n &#39;/^@/p&#39; sample.fastq | wc -l</code></pre></div>
+
+<p><code>-n:</code> Suppresses the automatic printing of lines.
+<code>/^@/p</code>: This searches for lines that start with the @ character (<code>^@</code> is a regex pattern where ^ anchors the match to the start of the line), and prints them.
+<code>wc -l</code>: Counts the number of lines printed, which corresponds to the number of sequences in the FASTQ file.</p>
+
+<p><strong>Output</strong></p>
+
+<pre style="background-color: #000000; color: #FFFFFF; padding: 2px; border-radius: 2px;">
+1
+</pre>
+
+<p><strong>Extract the Quality Scores</strong>
+The quality scores are located on every fourth line (line number 4, 8, 12, etc.).</p>
+
+<div><pre><code class="language-bash">sed -n &#39;4~4p&#39; sample.fastq</code></pre></div>
+
+<p><code>4~4p</code>: This pattern means &quot;starting at line 4, print every 4th line.&quot; </p>
+
+<p><strong>Output</strong>
+<pre style="background-color: #000000; color: #FFFFFF; padding: 3px; border-radius: 3px;">
+!!!FFFDDDDDBBAA&gt;@AABBB
+</pre></p>
+
+<p>Here are the main properties of sed:</p>
+
+<table>
+<thead>
+<tr>
+<th><strong>Concept</strong></th>
+<th><strong>Description</strong></th>
+<th><strong>Syntax</strong></th>
+<th><strong>Example</strong></th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><strong>Pattern Matching</strong></td>
+<td>Search for lines matching a regular expression or pattern and apply transformations to those lines.</td>
+<td><code>/pattern/</code></td>
+<td><code>sed &#39;/Linux/d&#39; file.txt</code> <br> (Deletes lines containing &quot;Linux&quot;).</td>
+</tr>
+<tr>
+<td><strong>Substitution</strong></td>
+<td>Replaces a matched pattern with a new string.</td>
+<td><code>s/pattern/replacement/flags</code></td>
+<td><code>sed &#39;s/old/new/g&#39; file.txt</code> <br> (Replaces &quot;old&quot; with &quot;new&quot; globally).</td>
+</tr>
+<tr>
+<td><strong>Deletion</strong></td>
+<td>Deletes lines matching a pattern or a specific range of lines.</td>
+<td><code>/pattern/d</code> or <code>N,Md</code></td>
+<td><code>sed &#39;2,5d&#39; file.txt</code> <br> (Deletes lines 2 to 5).</td>
+</tr>
+<tr>
+<td><strong>Inserting Text</strong></td>
+<td>Adds new lines of text before or after lines that match a pattern or specific line numbers.</td>
+<td><code>a\text</code> or <code>i\text</code></td>
+<td><code>sed &#39;2a\New line here&#39; file.txt</code> <br> (Inserts &quot;New line here&quot; after line 2).</td>
+</tr>
+<tr>
+<td><strong>Appending Text</strong></td>
+<td>Appends text after a matched line or range of lines.</td>
+<td><code>a\text</code></td>
+<td><code>sed &#39;/Linux/a\This is appended&#39; file.txt</code> <br> (Appends &quot;This is appended&quot; after lines containing &quot;Linux&quot;).</td>
+</tr>
+<tr>
+<td><strong>Replace In-place</strong></td>
+<td>Edit files directly without generating an output file (in-place replacement).</td>
+<td><code>sed -i &#39;command&#39; file</code></td>
+<td><code>sed -i &#39;s/Linux/UNIX/g&#39; file.txt</code> <br> (Replaces &quot;Linux&quot; with &quot;UNIX&quot; in-place).</td>
+</tr>
+<tr>
+<td><strong>Range Operations</strong></td>
+<td>Apply commands to a range of lines based on line numbers or regular expressions.</td>
+<td><code>N,Mcommand</code></td>
+<td><code>sed &#39;2,5s/foo/bar/g&#39; file.txt</code> <br> (Replaces &quot;foo&quot; with &quot;bar&quot; between lines 2 and 5).</td>
+</tr>
+<tr>
+<td><strong>Print</strong></td>
+<td>Print specific lines or matching patterns to standard output.</td>
+<td><code>p</code></td>
+<td><code>sed -n &#39;/Linux/p&#39; file.txt</code> <br> (Prints lines containing &quot;Linux&quot;).</td>
+</tr>
+<tr>
+<td><strong>Replace nth Occurrence</strong></td>
+<td>Replaces only the nth occurrence of a pattern in each line.</td>
+<td><code>s/pattern/replacement/n</code></td>
+<td><code>sed &#39;s/old/new/2&#39; file.txt</code> <br> (Replaces the second occurrence of &quot;old&quot; with &quot;new&quot; in each line).</td>
+</tr>
+<tr>
+<td><strong>Multiple Commands</strong></td>
+<td>Execute multiple <code>sed</code> commands in a sequence.</td>
+<td><code>sed -e &#39;command1&#39; -e &#39;command2&#39;</code></td>
+<td><code>sed -e &#39;s/foo/bar/&#39; -e &#39;s/baz/qux/&#39; file.txt</code> <br> (Applies two substitutions: &quot;foo&quot; to &quot;bar&quot; and &quot;baz&quot; to &quot;qux&quot;).</td>
+</tr>
+<tr>
+<td><strong>Change Delimiter</strong></td>
+<td>Change the default delimiter (&quot;/&quot;) for substitution to avoid conflicts when working with paths or URLs.</td>
+<td><code>s#pattern#replacement#flags</code></td>
+<td><code>sed &#39;s#/path/old#/path/new#g&#39; file.txt</code> <br> (Replaces &quot;/path/old&quot; with &quot;/path/new&quot;).</td>
+</tr>
+<tr>
+<td><strong>Addresses</strong></td>
+<td>Apply commands to specific line numbers or ranges.</td>
+<td><code>N,Mcommand</code></td>
+<td><code>sed &#39;1,10d&#39; file.txt</code> <br> (Deletes lines 1 to 10).</td>
+</tr>
+<tr>
+<td><strong>Escape Sequences</strong></td>
+<td>Use escape sequences to match special characters, tabs, and line breaks.</td>
+<td><code>\</code> for special characters</td>
+<td><code>sed &#39;s/\$/Dollar/g&#39; file.txt</code> <br> (Replaces &quot;$&quot; with &quot;Dollar&quot;).</td>
+</tr>
+<tr>
+<td><strong>Global Flag (<code>g</code>)</strong></td>
+<td>Applies the substitution to all matches within a line (without it, only the first occurrence is replaced).</td>
+<td><code>g</code> (global)</td>
+<td><code>sed &#39;s/foo/bar/g&#39; file.txt</code> <br> (Replaces all occurrences of &quot;foo&quot; with &quot;bar&quot;).</td>
+</tr>
+<tr>
+<td><strong>Print without Buffer</strong></td>
+<td>Prints matching lines as soon as they are processed.</td>
+<td><code>-u</code> (unbuffered output)</td>
+<td><code>sed -u &#39;/Linux/p&#39; file.txt</code> <br> (Prints lines containing &quot;Linux&quot; unbuffered).</td>
+</tr>
+<tr>
+<td><strong>Quit after N Lines</strong></td>
+<td>Stops processing after N lines.</td>
+<td><code>Nq</code></td>
+<td><code>sed &#39;5q&#39; file.txt</code> <br> (Stops processing after line 5).</td>
+</tr>
+<tr>
+<td><strong>String Replacement</strong></td>
+<td>Replaces specific strings with other strings in a range of lines.</td>
+<td><code>s/pattern/replacement/</code></td>
+<td><code>sed &#39;s/Linux/UNIX/&#39; file.txt</code> <br> (Replaces the first occurrence of &quot;Linux&quot; with &quot;UNIX&quot;).</td>
+</tr>
+<tr>
+<td><strong>Case-Insensitive Flag</strong></td>
+<td>Ignores case when performing pattern matching.</td>
+<td><code>I</code></td>
+<td><code>sed &#39;s/linux/UNIX/I&#39; file.txt</code> <br> (Replaces &quot;linux&quot; with &quot;UNIX&quot;, case-insensitive).</td>
+</tr>
+<tr>
+<td><strong>Whitespace Matching</strong></td>
+<td>Matches whitespace characters like tabs and spaces using escape sequences.</td>
+<td><code>\s</code> (space) and <code>\t</code> (tab)</td>
+<td><code>sed &#39;s/\t/    /g&#39; file.txt</code> <br> (Replaces tabs with four spaces).</td>
+</tr>
+<tr>
+<td><strong>Control Structure</strong></td>
+<td>Combines conditionals with pattern matching to execute commands based on specific conditions.</td>
+<td><code>/pattern/ { commands }</code></td>
+<td><code>sed &#39;/Linux/ { s/Linux/UNIX/g }&#39; file.txt</code> <br> (If &quot;Linux&quot; is found, replaces all instances of &quot;Linux&quot; with &quot;UNIX&quot;).</td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+</body>
+
+</html>
